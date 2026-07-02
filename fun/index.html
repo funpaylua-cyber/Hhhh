@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кнопка хорошего дня</title>
+<meta name="description" content="Нажми и получи немного тепла">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --ink: #2b2140; }
+body {
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-family: 'Fredoka', sans-serif;
+  color: var(--ink);
+  text-align: center;
+  padding: 24px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(120deg, #ffd6e8, #d6e4ff, #d6fff0, #fff3d6);
+  background-size: 400% 400%;
+  animation: bgShift 14s ease infinite;
+}
+@keyframes bgShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.card {
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(10px);
+  border-radius: 28px;
+  padding: clamp(36px, 8vw, 64px) clamp(24px, 6vw, 56px);
+  max-width: 560px;
+  box-shadow: 0 30px 60px rgba(43, 33, 64, 0.14);
+  position: relative;
+  z-index: 2;
+}
+.eyebrow { font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.55; margin-bottom: 14px; }
+.message {
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  font-weight: 600;
+  line-height: 1.3;
+  min-height: 3.6em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .25s, transform .25s;
+}
+.message.is-swapping { opacity: 0; transform: scale(0.92) translateY(8px); }
+
+.btn {
+  margin-top: 28px;
+  border: none;
+  cursor: pointer;
+  padding: 16px 40px;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #ff8fb3, #7c8cff);
+  border-radius: 999px;
+  box-shadow: 0 12px 26px rgba(124, 140, 255, 0.4);
+  transition: transform .2s cubic-bezier(.34,1.56,.64,1), box-shadow .2s;
+}
+.btn:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 16px 32px rgba(124, 140, 255, 0.5); }
+.btn:active { transform: scale(0.96); }
+
+.counter { margin-top: 18px; font-size: 0.85rem; opacity: 0.5; }
+
+.confetti-piece {
+  position: fixed;
+  top: -10px;
+  width: 9px; height: 9px;
+  z-index: 5;
+  pointer-events: none;
+  animation: confettiFall 1.8s ease-in forwards;
+}
+@keyframes confettiFall {
+  to { transform: translateY(105vh) rotate(540deg); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <p class="eyebrow">Кнопка хорошего дня</p>
+  <p class="message" id="message">Нажми кнопку — получи немного тепла ✨</p>
+  <button class="btn" id="btn">Нажать ещё раз</button>
+  <p class="counter" id="counter"></p>
+</div>
+
+<script>
+const messages = [
+  'Ты справляешься лучше, чем думаешь.',
+  'Сегодня отличный день, чтобы начать что-то новое.',
+  'Кто-то сейчас улыбается, вспомнив тебя.',
+  'Твоя идея достаточно хороша, чтобы попробовать.',
+  'Маленький шаг сегодня — большая разница через год.',
+  'Ты уже прошёл больше, чем кажется.',
+  'Отдохнуть — тоже часть плана. Разрешаю.',
+  'У тебя классный вкус. Серьёзно.',
+  'Сложные дни делают лёгкие ощутимее.',
+  'Кто-то бы многое отдал за твою настойчивость.',
+  'Сделай сегодня одну вещь только для себя.',
+  'Ты не обязан быть идеальным, чтобы быть достаточным.',
+];
+
+const messageEl = document.getElementById('message');
+const btn = document.getElementById('btn');
+const counterEl = document.getElementById('counter');
+let clicks = 0;
+let lastIndex = -1;
+
+function randomMessage() {
+  let i;
+  do { i = Math.floor(Math.random() * messages.length); } while (i === lastIndex);
+  lastIndex = i;
+  return messages[i];
+}
+
+function burstConfetti() {
+  const colors = ['#ff8fb3', '#7c8cff', '#ffd166', '#7ee8b0'];
+  for (let i = 0; i < 24; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = `${Math.random() * 100}vw`;
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    piece.style.animationDuration = `${1.3 + Math.random() * 1}s`;
+    piece.style.animationDelay = `${Math.random() * 0.2}s`;
+    document.body.appendChild(piece);
+    piece.addEventListener('animationend', () => piece.remove());
+  }
+}
+
+btn.addEventListener('click', () => {
+  clicks++;
+  messageEl.classList.add('is-swapping');
+  setTimeout(() => {
+    messageEl.textContent = randomMessage();
+    messageEl.classList.remove('is-swapping');
+  }, 220);
+  burstConfetti();
+  counterEl.textContent = clicks === 1 ? 'нажатий: 1' : `нажатий: ${clicks}`;
+});
+</script>
+</body>
+</html>

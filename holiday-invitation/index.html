@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Новогодняя вечеринка — 31 декабря</title>
+<meta name="description" content="Приглашение на новогоднюю вечеринку">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0f1a2e;
+  --navy-deep: #0a1220;
+  --gold: #d4af6a;
+  --gold-soft: #e8cf9c;
+  --cream: #f5f0e6;
+  --line: rgba(245, 240, 230, 0.14);
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Jost', sans-serif;
+  --ease: cubic-bezier(.16,1,.3,1);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--navy);
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+h1, h2 { font-family: var(--font-serif); font-weight: 600; }
+
+/* снегопад */
+.snow { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+.snow span {
+  position: absolute; top: -10px;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--gold-soft);
+  opacity: 0.6;
+  animation: fall linear infinite;
+}
+@keyframes fall {
+  to { transform: translateY(110vh) translateX(20px); opacity: 0; }
+}
+
+section { position: relative; z-index: 2; padding: 110px 24px; max-width: 720px; margin: 0 auto; text-align: center; }
+
+/* hero */
+.hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.hero__eyebrow { font-size: 0.8rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+.hero__title { font-size: clamp(2.6rem, 8vw, 5rem); line-height: 1.1; margin-bottom: 16px; }
+.hero__title em { font-style: italic; color: var(--gold); }
+.hero__date { font-size: 1.1rem; letter-spacing: 0.15em; margin-bottom: 6px; }
+.hero__venue { font-size: 0.95rem; opacity: 0.65; margin-bottom: 50px; }
+
+.countdown { display: flex; gap: clamp(16px, 4vw, 36px); }
+.countdown__item { display: flex; flex-direction: column; align-items: center; }
+.countdown__num { font-family: var(--font-serif); font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--gold); }
+.countdown__label { font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.55; margin-top: 6px; }
+
+.sparkle { position: absolute; color: var(--gold); opacity: 0.5; animation: twinkle 2.4s ease-in-out infinite; }
+@keyframes twinkle { 0%, 100% { opacity: 0.15; transform: scale(0.8); } 50% { opacity: 0.7; transform: scale(1.1); } }
+
+/* общие заголовки */
+.eyebrow { font-size: 0.78rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.title { font-size: clamp(1.8rem, 4.5vw, 2.4rem); margin-bottom: 40px; }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* детали */
+.details__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+@media (max-width: 640px) { .details__grid { grid-template-columns: 1fr; } }
+.detail-card {
+  background: rgba(245, 240, 230, 0.04);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 32px 20px;
+}
+.detail-card h3 { font-size: 1.25rem; margin-bottom: 8px; color: var(--gold-soft); }
+.detail-card p { font-size: 0.88rem; opacity: 0.75; line-height: 1.6; }
+
+/* дресс-код */
+.palette { display: flex; justify-content: center; gap: 12px; margin-top: 30px; }
+.palette span { width: 28px; height: 28px; border-radius: 50%; background: var(--c); border: 1px solid var(--line); }
+
+/* rsvp-подобный блок без формы */
+.cta {
+  background: rgba(212, 175, 106, 0.08);
+  border: 1px solid rgba(212, 175, 106, 0.3);
+  border-radius: 20px;
+  padding: 44px 28px;
+}
+.cta p { font-size: 0.95rem; opacity: 0.8; margin-bottom: 22px; line-height: 1.6; }
+.btn {
+  display: inline-block;
+  padding: 14px 34px;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  color: var(--navy);
+  background: var(--gold);
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: transform .3s var(--ease), background .3s;
+}
+.btn:hover { background: var(--gold-soft); transform: translateY(-2px); }
+
+footer { text-align: center; padding: 60px 24px; opacity: 0.5; font-size: 0.82rem; position: relative; z-index: 2; }
+</style>
+</head>
+<body>
+
+<div class="snow" id="snow"></div>
+
+<section class="hero">
+  <svg class="sparkle" style="left:15%;top:20%" width="18" height="18" viewBox="0 0 24 24"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" fill="currentColor"/></svg>
+  <svg class="sparkle" style="right:18%;top:30%;animation-delay:1s" width="14" height="14" viewBox="0 0 24 24"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" fill="currentColor"/></svg>
+  <svg class="sparkle" style="left:22%;bottom:25%;animation-delay:1.6s" width="12" height="12" viewBox="0 0 24 24"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" fill="currentColor"/></svg>
+
+  <p class="hero__eyebrow">Приглашаем на</p>
+  <h1 class="hero__title">Новогодняя <em>вечеринка</em></h1>
+  <p class="hero__date">31 декабря · 20:00</p>
+  <p class="hero__venue">Лофт «Северное сияние», Москва</p>
+
+  <div class="countdown" id="countdown">
+    <div class="countdown__item"><span class="countdown__num" id="cdDays">00</span><span class="countdown__label">дней</span></div>
+    <div class="countdown__item"><span class="countdown__num" id="cdHours">00</span><span class="countdown__label">часов</span></div>
+    <div class="countdown__item"><span class="countdown__num" id="cdMinutes">00</span><span class="countdown__label">минут</span></div>
+    <div class="countdown__item"><span class="countdown__num" id="cdSeconds">00</span><span class="countdown__label">секунд</span></div>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow reveal">Что нужно знать</p>
+  <h2 class="title reveal">Детали вечера</h2>
+  <div class="details__grid">
+    <div class="detail-card reveal">
+      <h3>Начало</h3>
+      <p>Сбор гостей в 20:00, праздничная программа с 21:00 до рассвета</p>
+    </div>
+    <div class="detail-card reveal">
+      <h3>Дресс-код</h3>
+      <p>Тёмно-синий и золото — блеск приветствуется</p>
+    </div>
+    <div class="detail-card reveal">
+      <h3>Формат</h3>
+      <p>Фуршет, диджей, фейерверк в полночь</p>
+    </div>
+  </div>
+  <div class="palette reveal" aria-hidden="true">
+    <span style="--c:#0f1a2e"></span>
+    <span style="--c:#d4af6a"></span>
+    <span style="--c:#f5f0e6"></span>
+    <span style="--c:#8a1f2b"></span>
+  </div>
+</section>
+
+<section>
+  <div class="cta reveal">
+    <p class="eyebrow" style="margin-bottom:14px">До встречи</p>
+    <h2 class="title" style="margin-bottom:14px">Будем ждать вас</h2>
+    <p>Дайте знать, что придёте — напишите организатору любым удобным способом</p>
+    <a class="btn" href="tel:+70000000000">Подтвердить участие</a>
+  </div>
+</section>
+
+<footer>Новогодняя вечеринка · 31 декабря</footer>
+
+<script>
+// снегопад
+const snow = document.getElementById('snow');
+for (let i = 0; i < 40; i++) {
+  const flake = document.createElement('span');
+  flake.style.left = `${Math.random() * 100}%`;
+  flake.style.animationDuration = `${8 + Math.random() * 10}s`;
+  flake.style.animationDelay = `${Math.random() * 10}s`;
+  flake.style.opacity = 0.3 + Math.random() * 0.5;
+  flake.style.width = flake.style.height = `${3 + Math.random() * 4}px`;
+  snow.appendChild(flake);
+}
+
+// обратный отсчёт до 31 декабря текущего/следующего года, 20:00
+function nextNewYearEve() {
+  const now = new Date();
+  let year = now.getFullYear();
+  let target = new Date(`${year}-12-31T20:00:00`);
+  if (target < now) target = new Date(`${year + 1}-12-31T20:00:00`);
+  return target;
+}
+const TARGET = nextNewYearEve();
+
+function updateCountdown() {
+  const diff = TARGET - new Date();
+  const els = {
+    days: document.getElementById('cdDays'),
+    hours: document.getElementById('cdHours'),
+    minutes: document.getElementById('cdMinutes'),
+    seconds: document.getElementById('cdSeconds'),
+  };
+  if (diff <= 0) { Object.values(els).forEach(el => el.textContent = '00'); return; }
+  els.days.textContent = String(Math.floor(diff / 864e5)).padStart(2, '0');
+  els.hours.textContent = String(Math.floor((diff / 36e5) % 24)).padStart(2, '0');
+  els.minutes.textContent = String(Math.floor((diff / 6e4) % 60)).padStart(2, '0');
+  els.seconds.textContent = String(Math.floor((diff / 1e3) % 60)).padStart(2, '0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// reveal on scroll
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+}, { threshold: 0.15 });
+revealEls.forEach(el => io.observe(el));
+</script>
+</body>
+</html>

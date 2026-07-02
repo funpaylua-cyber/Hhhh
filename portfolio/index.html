@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Лена Волкова — продуктовый дизайнер</title>
+<meta name="description" content="Портфолио продуктового дизайнера Лены Волковой">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #14151a;
+  --paper: #fbfaf8;
+  --paper-dim: #f0eee8;
+  --accent: #4f5eff;
+  --accent-soft: #e6e8ff;
+  --line: rgba(20,21,26,0.1);
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --ease: cubic-bezier(.16,1,.3,1);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-sans); overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+img, svg { display: block; max-width: 100%; }
+
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px clamp(20px, 5vw, 60px);
+  background: rgba(251,250,248,0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.nav__logo { font-weight: 700; font-size: 1.05rem; }
+.nav__logo span { color: var(--accent); }
+.nav__links { display: flex; gap: clamp(16px, 3vw, 30px); align-items: center; }
+.nav__links a { font-size: 0.88rem; font-weight: 500; opacity: 0.75; transition: opacity .2s; }
+.nav__links a:hover { opacity: 1; }
+.nav__cta { padding: 9px 18px; background: var(--ink); color: var(--paper) !important; border-radius: 999px; opacity: 1 !important; }
+@media (max-width: 640px) { .nav__links a:not(.nav__cta) { display: none; } }
+
+section { padding: 100px clamp(20px, 6vw, 80px); max-width: 1100px; margin: 0 auto; }
+
+.hero { padding-top: 120px; padding-bottom: 80px; }
+.hero__badge { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; background: var(--accent-soft); color: var(--accent); border-radius: 999px; font-size: 0.8rem; font-weight: 500; margin-bottom: 26px; }
+.hero__badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.hero__title { font-size: clamp(2.6rem, 6.5vw, 4.6rem); line-height: 1.05; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 22px; }
+.hero__title span { color: var(--accent); }
+.hero__sub { max-width: 56ch; font-size: 1.15rem; line-height: 1.7; opacity: 0.68; margin-bottom: 38px; }
+.hero__actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 10px; font-size: 0.92rem; font-weight: 500; transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
+.btn--primary { background: var(--ink); color: var(--paper); }
+.btn--primary:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(20,21,26,0.2); }
+.btn--ghost { border: 1px solid var(--line); }
+.btn--ghost:hover { background: var(--paper-dim); }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+.section-head { margin-bottom: 46px; }
+.eyebrow { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); margin-bottom: 10px; }
+.title { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 700; letter-spacing: -0.01em; }
+
+/* projects */
+.projects__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+@media (max-width: 720px) { .projects__grid { grid-template-columns: 1fr; } }
+.project-card {
+  background: var(--paper-dim); border: 1px solid var(--line); border-radius: 18px;
+  padding: 28px; transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.project-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(20,21,26,0.08); }
+.project-card__thumb { aspect-ratio: 16/10; border-radius: 12px; margin-bottom: 20px; }
+.project-card__thumb--a { background: linear-gradient(150deg,#dfe3ff,#4f5eff); }
+.project-card__thumb--b { background: linear-gradient(150deg,#ffe8d6,#ff8a4c); }
+.project-card__thumb--c { background: linear-gradient(150deg,#dbf3e5,#2fae67); }
+.project-card__thumb--d { background: linear-gradient(150deg,#fbe0ec,#e0568c); }
+.project-card h3 { font-size: 1.2rem; margin-bottom: 8px; }
+.project-card p { font-size: 0.9rem; opacity: 0.65; line-height: 1.6; margin-bottom: 14px; }
+.tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.tags span { font-family: var(--font-mono); font-size: 0.72rem; padding: 4px 10px; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; }
+
+/* skills */
+.skills__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+@media (max-width: 720px) { .skills__grid { grid-template-columns: repeat(2, 1fr); } }
+.skill-card { padding: 22px; border: 1px solid var(--line); border-radius: 14px; text-align: center; }
+.skill-card__num { font-family: var(--font-mono); font-size: 1.6rem; color: var(--accent); margin-bottom: 6px; }
+.skill-card span { font-size: 0.85rem; opacity: 0.7; }
+
+/* contact */
+.contact { text-align: center; }
+.contact__box { background: var(--ink); color: var(--paper); border-radius: 28px; padding: clamp(50px, 8vw, 90px) 24px; }
+.contact__title { font-size: clamp(2rem, 5.5vw, 3.2rem); font-weight: 700; margin-bottom: 20px; letter-spacing: -0.02em; }
+.contact__title span { color: #8f9bff; }
+.contact p { opacity: 0.65; margin-bottom: 30px; }
+.contact .btn--primary { background: var(--paper); color: var(--ink); }
+
+footer { text-align: center; padding: 40px 24px; opacity: 0.5; font-size: 0.82rem; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a href="#" class="nav__logo">Лена <span>Волкова</span></a>
+  <nav class="nav__links">
+    <a href="#work">Проекты</a>
+    <a href="#skills">Навыки</a>
+    <a href="#contact" class="nav__cta">Написать</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <p class="hero__badge reveal">Открыта для новых проектов</p>
+  <h1 class="hero__title reveal">Продуктовый дизайнер, <span>который думает кодом</span></h1>
+  <p class="hero__sub reveal">Проектирую интерфейсы для B2B и финтех-продуктов последние 6 лет. Довожу идею от первого скетча до продакшена — и умею объясниться с разработчиками на их языке.</p>
+  <div class="hero__actions reveal">
+    <a class="btn btn--primary" href="#work">Смотреть проекты</a>
+    <a class="btn btn--ghost" href="#contact">Связаться</a>
+  </div>
+</section>
+
+<section id="work">
+  <div class="section-head reveal">
+    <p class="eyebrow">// избранное</p>
+    <h2 class="title">Проекты</h2>
+  </div>
+  <div class="projects__grid">
+    <div class="project-card reveal">
+      <div class="project-card__thumb project-card__thumb--a"></div>
+      <h3>Finto — банк для фрилансеров</h3>
+      <p>Редизайн мобильного онбординга, рост конверсии на 34%</p>
+      <div class="tags"><span>Mobile</span><span>Fintech</span><span>UX-research</span></div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-card__thumb project-card__thumb--b"></div>
+      <h3>Loop — CRM для агентств</h3>
+      <p>Дизайн-система с нуля и панель аналитики для 40+ команд</p>
+      <div class="tags"><span>Design system</span><span>B2B</span><span>Dashboard</span></div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-card__thumb project-card__thumb--c"></div>
+      <h3>Grove — маркетплейс фермеров</h3>
+      <p>Прототип и первая версия продукта за 6 недель</p>
+      <div class="tags"><span>0→1</span><span>E-commerce</span></div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-card__thumb project-card__thumb--d"></div>
+      <h3>Pulse — трекер здоровья</h3>
+      <p>Визуализация данных и геймификация ежедневных привычек</p>
+      <div class="tags"><span>Data viz</span><span>Mobile</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-head reveal">
+    <p class="eyebrow">// в цифрах</p>
+    <h2 class="title">Опыт</h2>
+  </div>
+  <div class="skills__grid">
+    <div class="skill-card reveal"><div class="skill-card__num">6</div><span>лет в дизайне</span></div>
+    <div class="skill-card reveal"><div class="skill-card__num">30+</div><span>завершённых проектов</span></div>
+    <div class="skill-card reveal"><div class="skill-card__num">12</div><span>дизайн-систем с нуля</span></div>
+    <div class="skill-card reveal"><div class="skill-card__num">98%</div><span>клиентов возвращаются</span></div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="contact__box reveal">
+    <h2 class="contact__title">Есть задача? <span>Давайте обсудим</span></h2>
+    <p>Отвечаю в течение дня — пишите на почту или в телеграм</p>
+    <a class="btn btn--primary" href="mailto:hello@lenavolkova.design">hello@lenavolkova.design</a>
+  </div>
+</section>
+
+<footer>© Лена Волкова · Продуктовый дизайнер</footer>
+
+<script>
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+revealEls.forEach(el => io.observe(el));
+</script>
+</body>
+</html>

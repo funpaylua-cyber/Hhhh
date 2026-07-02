@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Марк Соколов — фотограф</title>
+<meta name="description" content="Портфолио фотографа Марка Соколова">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #131211;
+  --paper: #f3f1ec;
+  --line: rgba(243,241,236,0.16);
+  --accent: #c77b4e;
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Jost', sans-serif;
+  --ease: cubic-bezier(.16,1,.3,1);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--ink); color: var(--paper); font-family: var(--font-sans); font-weight: 300; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+h1, h2 { font-family: var(--font-serif); font-weight: 400; }
+img, svg { display: block; max-width: 100%; }
+
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 26px clamp(20px, 5vw, 60px);
+  mix-blend-mode: difference;
+}
+.nav__logo { font-family: var(--font-serif); font-size: 1.1rem; letter-spacing: 0.04em; }
+.nav__links { display: flex; gap: clamp(18px, 3vw, 36px); }
+.nav__links a { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; }
+@media (max-width: 640px) { .nav__links { display: none; } }
+
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+  padding: 120px clamp(24px, 6vw, 80px) 60px;
+}
+.hero__eyebrow { font-size: 0.8rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; }
+.hero__title { font-size: clamp(3rem, 9vw, 7rem); line-height: 0.98; margin-bottom: 26px; }
+.hero__title em { font-style: italic; color: var(--accent); }
+.hero__sub { max-width: 44ch; font-size: 1.05rem; opacity: 0.72; line-height: 1.7; }
+
+.marquee { background: var(--accent); color: var(--ink); overflow: hidden; padding: 14px 0; white-space: nowrap; }
+.marquee__track { display: inline-flex; animation: marquee 22s linear infinite; }
+.marquee__track span { font-family: var(--font-serif); font-style: italic; font-size: 1.1rem; padding: 0 26px; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+section { padding: 110px clamp(24px, 6vw, 80px); }
+.section-head { margin-bottom: 50px; }
+.eyebrow { font-size: 0.78rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+.title { font-size: clamp(2rem, 5vw, 3rem); }
+
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* about */
+.about { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(30px,6vw,80px); align-items: center; }
+.about__photo { aspect-ratio: 4/5; border-radius: 4px; background: linear-gradient(160deg, #6b5236, #2c2419); position: relative; overflow: hidden; }
+.about__photo::after { content: 'портрет фотографа · плейсхолдер'; position: absolute; left: 14px; bottom: 12px; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.65; }
+.about__text { font-size: 1.05rem; line-height: 1.8; opacity: 0.8; }
+@media (max-width: 800px) { .about { grid-template-columns: 1fr; } }
+
+/* gallery */
+.gallery__grid { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 160px; gap: 14px; }
+.gallery__tile { border-radius: 2px; position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 14px; }
+.gallery__tile::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.5)); }
+.gallery__tile span { position: relative; z-index: 1; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.gallery__tile--1 { grid-column: span 3; grid-row: span 2; background: linear-gradient(150deg,#3a2f26,#846b48); }
+.gallery__tile--2 { grid-column: span 3; background: linear-gradient(150deg,#242627,#5c6b6d); }
+.gallery__tile--3 { grid-column: span 3; background: linear-gradient(150deg,#2c231d,#c77b4e); }
+.gallery__tile--4 { grid-column: span 2; background: linear-gradient(150deg,#1e2420,#4c5c4a); }
+.gallery__tile--5 { grid-column: span 4; background: linear-gradient(150deg,#332a2a,#8a5a52); }
+@media (max-width: 700px) {
+  .gallery__grid { grid-template-columns: repeat(2,1fr); grid-auto-rows: 140px; }
+  .gallery__tile { grid-column: span 1 !important; grid-row: span 1 !important; }
+}
+
+/* services */
+.services__list { border-top: 1px solid var(--line); }
+.service-row { display: flex; justify-content: space-between; align-items: baseline; padding: 26px 0; border-bottom: 1px solid var(--line); gap: 20px; }
+.service-row h3 { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 400; }
+.service-row span { font-size: 0.85rem; opacity: 0.6; white-space: nowrap; }
+
+/* contact */
+.contact { text-align: center; }
+.contact__title { font-size: clamp(2.2rem, 7vw, 4rem); margin-bottom: 26px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 36px; border: 1px solid var(--paper); border-radius: 999px; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; transition: background .3s, color .3s; }
+.btn:hover { background: var(--paper); color: var(--ink); }
+
+footer { text-align: center; padding: 50px 24px; opacity: 0.5; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a href="#" class="nav__logo">Марк Соколов</a>
+  <nav class="nav__links">
+    <a href="#about">О себе</a>
+    <a href="#work">Работы</a>
+    <a href="#services">Услуги</a>
+    <a href="#contact">Контакты</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <p class="hero__eyebrow">Фотограф · Москва</p>
+  <h1 class="hero__title">Свет,<br>который <em>остаётся</em></h1>
+  <p class="hero__sub">Снимаю свадьбы, портреты и репортажи — честно, без постановки, с вниманием к деталям, которые важны именно вам.</p>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>Свадьбы</span><span>Портреты</span><span>Репортаж</span><span>Love story</span>
+    <span>Свадьбы</span><span>Портреты</span><span>Репортаж</span><span>Love story</span>
+  </div>
+</div>
+
+<section id="about">
+  <div class="about">
+    <div class="about__photo reveal"></div>
+    <div class="reveal">
+      <p class="eyebrow">О себе</p>
+      <h2 class="title" style="margin-bottom:22px">10 лет в кадре</h2>
+      <p class="about__text">Начинал с плёнки — она научила терпению и вниманию к моменту. Сегодня снимаю на цифру, но подход остался прежним: не мешать происходящему, а быть рядом ровно настолько, чтобы поймать настоящее. За плечами больше 200 съёмок в России и Европе.</p>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="section-head reveal">
+    <p class="eyebrow">Избранное</p>
+    <h2 class="title">Работы</h2>
+  </div>
+  <div class="gallery__grid">
+    <div class="gallery__tile gallery__tile--1 reveal"><span>Свадьба · Прага</span></div>
+    <div class="gallery__tile gallery__tile--2 reveal"><span>Портрет</span></div>
+    <div class="gallery__tile gallery__tile--3 reveal"><span>Репортаж</span></div>
+    <div class="gallery__tile gallery__tile--4 reveal"><span>Love story</span></div>
+    <div class="gallery__tile gallery__tile--5 reveal"><span>Свадьба · Тоскана</span></div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-head reveal">
+    <p class="eyebrow">Прайс</p>
+    <h2 class="title">Услуги</h2>
+  </div>
+  <div class="services__list reveal">
+    <div class="service-row"><h3>Свадебный день</h3><span>от 45 000 ₽</span></div>
+    <div class="service-row"><h3>Портретная съёмка</h3><span>от 12 000 ₽</span></div>
+    <div class="service-row"><h3>Репортаж мероприятия</h3><span>от 20 000 ₽</span></div>
+    <div class="service-row"><h3>Love story</h3><span>от 15 000 ₽</span></div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <p class="eyebrow reveal">На связи</p>
+  <h2 class="contact__title reveal">Расскажите<br>о своей идее</h2>
+  <a class="btn reveal" href="mailto:hello@marksokolov.photo">Написать · hello@marksokolov.photo</a>
+</section>
+
+<footer>© Марк Соколов · Фотограф</footer>
+
+<script>
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+revealEls.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
