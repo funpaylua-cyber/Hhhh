@@ -99,22 +99,6 @@ navMobile.querySelectorAll('a').forEach(link => {
   });
 });
 
-// ============ КАСТОМНЫЙ КУРСОР НАД ГАЛЕРЕЕЙ ============
-const cursor = document.getElementById('cursor');
-const galleryStrip = document.getElementById('galleryStrip');
-
-if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-  window.addEventListener('mousemove', (e) => {
-    cursor.style.left = `${e.clientX}px`;
-    cursor.style.top = `${e.clientY}px`;
-  });
-
-  galleryStrip.querySelectorAll('.gallery__frame').forEach(frame => {
-    frame.addEventListener('mouseenter', () => cursor.classList.add('is-active'));
-    frame.addEventListener('mouseleave', () => cursor.classList.remove('is-active'));
-  });
-}
-
 // ============ RSVP ФОРМА ============
 const rsvpForm = document.getElementById('rsvpForm');
 const rsvpSuccess = document.getElementById('rsvpSuccess');
