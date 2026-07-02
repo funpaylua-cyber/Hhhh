@@ -99,6 +99,37 @@ navMobile.querySelectorAll('a').forEach(link => {
   });
 });
 
+// ============ ЗВУК ============
+const soundToggle = document.getElementById('soundToggle');
+const bgMusic = document.getElementById('bgMusic');
+
+soundToggle.addEventListener('click', () => {
+  const isPlaying = soundToggle.classList.toggle('is-playing');
+  soundToggle.setAttribute('aria-pressed', String(isPlaying));
+  soundToggle.setAttribute('aria-label', isPlaying ? 'Выключить музыку' : 'Включить музыку');
+  if (isPlaying) {
+    bgMusic.play().catch(() => {});
+  } else {
+    bgMusic.pause();
+  }
+});
+
+// ============ ПАРАЛЛАКС ============
+const parallaxEls = document.querySelectorAll('[data-parallax]');
+
+function updateParallax() {
+  const scrollTop = window.scrollY;
+  parallaxEls.forEach(el => {
+    const speed = parseFloat(el.dataset.parallax);
+    el.style.setProperty('--parallax-y', `${scrollTop * speed}px`);
+  });
+}
+
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  window.addEventListener('scroll', updateParallax, { passive: true });
+  updateParallax();
+}
+
 // ============ RSVP ФОРМА ============
 const rsvpForm = document.getElementById('rsvpForm');
 const rsvpSuccess = document.getElementById('rsvpSuccess');
