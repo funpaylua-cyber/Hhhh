@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Анна &amp; Максим — 20 сентября 2026</title>
+<meta name="description" content="Приглашение на свадьбу Анны и Максима">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ===== ЭКРАН-КОНВЕРТ ===== -->
+<div class="envelope-screen" id="envelopeScreen">
+  <div class="envelope">
+    <div class="envelope__monogram">
+      <svg viewBox="0 0 120 120" class="monogram-svg">
+        <circle cx="60" cy="60" r="58" fill="none" stroke="currentColor" stroke-width="1"/>
+        <text x="60" y="72" text-anchor="middle" class="monogram-text">А&amp;М</text>
+      </svg>
+    </div>
+    <p class="envelope__label">Приглашение</p>
+    <h1 class="envelope__names">Анна <span>&amp;</span> Максим</h1>
+    <p class="envelope__date">20 · 09 · 2026</p>
+    <button class="btn btn--open" id="openInvite">
+      <span>Открыть приглашение</span>
+    </button>
+  </div>
+  <div class="envelope-screen__bg" aria-hidden="true">
+    <svg class="leaf leaf--1" viewBox="0 0 200 400"><path d="M100 0 C160 80 160 320 100 400 C40 320 40 80 100 0 Z" fill="none" stroke="currentColor" stroke-width="1"/><line x1="100" y1="10" x2="100" y2="390" stroke="currentColor" stroke-width="1"/></svg>
+    <svg class="leaf leaf--2" viewBox="0 0 200 400"><path d="M100 0 C160 80 160 320 100 400 C40 320 40 80 100 0 Z" fill="none" stroke="currentColor" stroke-width="1"/><line x1="100" y1="10" x2="100" y2="390" stroke="currentColor" stroke-width="1"/></svg>
+  </div>
+</div>
+
+<!-- ===== НАВИГАЦИЯ-ТОЧКИ ===== -->
+<nav class="dot-nav" id="dotNav" aria-label="Навигация по разделам">
+  <a href="#hero" data-label="Начало" class="dot-nav__item is-active"></a>
+  <a href="#story" data-label="История" class="dot-nav__item"></a>
+  <a href="#details" data-label="Детали" class="dot-nav__item"></a>
+  <a href="#timeline" data-label="Программа" class="dot-nav__item"></a>
+  <a href="#gallery" data-label="Галерея" class="dot-nav__item"></a>
+  <a href="#rsvp" data-label="RSVP" class="dot-nav__item"></a>
+</nav>
+
+<main id="mainContent" class="main-content">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero__ornament hero__ornament--top" aria-hidden="true">
+      <svg viewBox="0 0 300 60"><path d="M10 30 Q150 -10 290 30" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="150" cy="18" r="3" fill="currentColor"/></svg>
+    </div>
+    <p class="hero__eyebrow reveal">Мы женимся</p>
+    <h1 class="hero__title reveal">Анна <span class="amp">&amp;</span> Максим</h1>
+    <p class="hero__date reveal">20 сентября 2026 · суббота</p>
+    <p class="hero__venue reveal">Загородный клуб «Тихий берег», Подмосковье</p>
+
+    <div class="countdown reveal" id="countdown" aria-live="polite">
+      <div class="countdown__item"><span class="countdown__num" id="cdDays">00</span><span class="countdown__label">дней</span></div>
+      <div class="countdown__item"><span class="countdown__num" id="cdHours">00</span><span class="countdown__label">часов</span></div>
+      <div class="countdown__item"><span class="countdown__num" id="cdMinutes">00</span><span class="countdown__label">минут</span></div>
+      <div class="countdown__item"><span class="countdown__num" id="cdSeconds">00</span><span class="countdown__label">секунд</span></div>
+    </div>
+
+    <div class="hero__ornament hero__ornament--bottom" aria-hidden="true">
+      <svg viewBox="0 0 300 60"><path d="M10 30 Q150 70 290 30" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="150" cy="42" r="3" fill="currentColor"/></svg>
+    </div>
+    <a href="#story" class="scroll-cue" aria-label="Пролистать вниз"><span></span></a>
+  </section>
+
+  <!-- ===== НАША ИСТОРИЯ ===== -->
+  <section class="story" id="story">
+    <div class="section-head reveal">
+      <p class="section-head__eyebrow">Наша история</p>
+      <h2 class="section-head__title">Путь к «да»</h2>
+    </div>
+    <p class="story__text reveal">
+      Пять лет назад случайная встреча на осеннем концерте изменила всё.
+      С тех пор — сотни городов, тысячи чашек кофе и одна большая мечта.
+      20 сентября мы наконец скажем друг другу главное «да» —
+      и будем невероятно счастливы разделить этот день с вами.
+    </p>
+    <div class="story__divider reveal" aria-hidden="true">
+      <svg viewBox="0 0 200 40"><path d="M0 20 H70" stroke="currentColor" stroke-width="1"/><path d="M100 5 L115 20 L100 35 L85 20 Z" fill="none" stroke="currentColor" stroke-width="1"/><path d="M130 20 H200" stroke="currentColor" stroke-width="1"/></svg>
+    </div>
+  </section>
+
+  <!-- ===== ДЕТАЛИ СОБЫТИЯ ===== -->
+  <section class="details" id="details">
+    <div class="section-head reveal">
+      <p class="section-head__eyebrow">20 сентября 2026</p>
+      <h2 class="section-head__title">Детали дня</h2>
+    </div>
+
+    <div class="details__grid">
+      <article class="detail-card reveal">
+        <div class="detail-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M24 4 L24 24 L36 30" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <h3>Церемония</h3>
+        <p class="detail-card__time">16:00</p>
+        <p>Выездная регистрация<br>Терраса «Тихого берега»</p>
+      </article>
+
+      <article class="detail-card reveal">
+        <div class="detail-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M8 40 L8 20 L24 8 L40 20 L40 40 Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M18 40 V26 H30 V40" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <h3>Банкет</h3>
+        <p class="detail-card__time">17:30</p>
+        <p>Праздничный ужин<br>Главный зал усадьбы</p>
+      </article>
+
+      <article class="detail-card reveal">
+        <div class="detail-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M24 4 C32 12 32 28 24 44 C16 28 16 12 24 4 Z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <h3>Дресс-код</h3>
+        <p class="detail-card__time">Terracotta &amp; Sage</p>
+        <p>Просим не надевать белый —<br>он для невесты</p>
+      </article>
+    </div>
+
+    <div class="palette reveal" aria-hidden="true">
+      <span class="palette__swatch" style="--c:#c17f59"></span>
+      <span class="palette__swatch" style="--c:#8a9a7b"></span>
+      <span class="palette__swatch" style="--c:#e4c9a6"></span>
+      <span class="palette__swatch" style="--c:#5f6b4f"></span>
+      <span class="palette__swatch" style="--c:#3a352f"></span>
+    </div>
+
+    <div class="map reveal">
+      <div class="map__card">
+        <svg class="map__pin" viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M24 4 C33 4 40 11 40 20 C40 32 24 44 24 44 C24 44 8 32 8 20 C8 11 15 4 24 4 Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="24" cy="20" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <p class="map__venue">Загородный клуб «Тихий берег»</p>
+        <p class="map__address">Московская область</p>
+      </div>
+      <a class="btn btn--outline" href="https://maps.google.com/?q=Подмосковье" target="_blank" rel="noopener">Построить маршрут</a>
+    </div>
+  </section>
+
+  <!-- ===== ПРОГРАММА ДНЯ ===== -->
+  <section class="timeline" id="timeline">
+    <div class="section-head reveal">
+      <p class="section-head__eyebrow">Не опаздывайте</p>
+      <h2 class="section-head__title">Программа дня</h2>
+    </div>
+
+    <ol class="timeline__list">
+      <li class="timeline__item reveal"><span class="timeline__time">15:30</span><span class="timeline__text">Сбор гостей, welcome-напитки</span></li>
+      <li class="timeline__item reveal"><span class="timeline__time">16:00</span><span class="timeline__text">Церемония бракосочетания</span></li>
+      <li class="timeline__item reveal"><span class="timeline__time">16:45</span><span class="timeline__text">Фотосессия, фуршет в саду</span></li>
+      <li class="timeline__item reveal"><span class="timeline__time">17:30</span><span class="timeline__text">Праздничный банкет</span></li>
+      <li class="timeline__item reveal"><span class="timeline__time">19:00</span><span class="timeline__text">Первый танец молодожёнов</span></li>
+      <li class="timeline__item reveal"><span class="timeline__time">21:00</span><span class="timeline__text">Танцы до ночи</span></li>
+    </ol>
+  </section>
+
+  <!-- ===== ГАЛЕРЕЯ ===== -->
+  <section class="gallery" id="gallery">
+    <div class="section-head reveal">
+      <p class="section-head__eyebrow">Немного нас</p>
+      <h2 class="section-head__title">Галерея</h2>
+    </div>
+    <div class="gallery__grid">
+      <div class="gallery__tile gallery__tile--a reveal"><span>фото пары</span></div>
+      <div class="gallery__tile gallery__tile--b reveal"><span>помолвка</span></div>
+      <div class="gallery__tile gallery__tile--c reveal"><span>путешествия</span></div>
+      <div class="gallery__tile gallery__tile--d reveal"><span>первая встреча</span></div>
+      <div class="gallery__tile gallery__tile--e reveal"><span>наши друзья</span></div>
+    </div>
+    <p class="gallery__hint reveal">Замените плейсхолдеры на реальные фотографии пары</p>
+  </section>
+
+  <!-- ===== RSVP ===== -->
+  <section class="rsvp" id="rsvp">
+    <div class="section-head reveal">
+      <p class="section-head__eyebrow">До 1 августа 2026</p>
+      <h2 class="section-head__title">Подтвердите присутствие</h2>
+    </div>
+
+    <form class="rsvp__form reveal" id="rsvpForm" novalidate>
+      <div class="field">
+        <label for="guestName">Ваше имя и фамилия</label>
+        <input type="text" id="guestName" name="guestName" required placeholder="Иван Иванов">
+      </div>
+
+      <fieldset class="field field--radio">
+        <legend>Вы будете с нами?</legend>
+        <label class="radio"><input type="radio" name="attending" value="yes" checked> С радостью приду</label>
+        <label class="radio"><input type="radio" name="attending" value="no"> К сожалению, не смогу</label>
+      </fieldset>
+
+      <div class="field">
+        <label for="guestCount">Количество гостей (с вами)</label>
+        <select id="guestCount" name="guestCount">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="guestMessage">Пожелание молодожёнам (необязательно)</label>
+        <textarea id="guestMessage" name="guestMessage" rows="3" placeholder="Ваши тёплые слова..."></textarea>
+      </div>
+
+      <button type="submit" class="btn btn--solid">Отправить ответ</button>
+      <p class="rsvp__success" id="rsvpSuccess" role="status">Спасибо! Ваш ответ получен — мы очень ждём встречи с вами 💛</p>
+    </form>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer__monogram">А<span>&amp;</span>М</div>
+    <p class="footer__names">Анна &amp; Максим</p>
+    <p class="footer__hashtag">#АннаиМаксим2026</p>
+    <p class="footer__contacts">По всем вопросам: <a href="tel:+70000000000">+7 (000) 000-00-00</a></p>
+  </footer>
+
+</main>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
