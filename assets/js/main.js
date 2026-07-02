@@ -1,13 +1,13 @@
-// ============ КОНВЕРТ: открытие приглашения ============
-const envelopeScreen = document.getElementById('envelopeScreen');
-const openInviteBtn = document.getElementById('openInvite');
+// ============ INTRO ============
+const intro = document.getElementById('intro');
+const introEnter = document.getElementById('introEnter');
 
-function openInvitation() {
-  envelopeScreen.classList.add('is-hidden');
+function enterSite() {
+  intro.classList.add('is-hidden');
   document.body.style.overflow = '';
 }
 
-openInviteBtn.addEventListener('click', openInvitation);
+introEnter.addEventListener('click', enterSite);
 document.body.style.overflow = 'hidden';
 
 // ============ ОБРАТНЫЙ ОТСЧЁТ ============
@@ -56,22 +56,64 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 revealEls.forEach(el => revealObserver.observe(el));
 
-// ============ АКТИВНАЯ ТОЧКА НАВИГАЦИИ ============
-const sections = document.querySelectorAll('main section[id]');
-const dotItems = document.querySelectorAll('.dot-nav__item');
+// ============ ПРОГРЕСС-БАР СКРОЛЛА ============
+const progressBar = document.getElementById('progress');
 
-const navObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const id = entry.target.id;
-      dotItems.forEach(dot => {
-        dot.classList.toggle('is-active', dot.getAttribute('href') === `#${id}`);
-      });
-    }
+function updateProgress() {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  progressBar.style.width = `${pct}%`;
+}
+
+window.addEventListener('scroll', updateProgress, { passive: true });
+updateProgress();
+
+// ============ NAV: СКРЫТИЕ ПРИ СКРОЛЛЕ ВНИЗ ============
+const nav = document.getElementById('nav');
+let lastScrollY = window.scrollY;
+
+window.addEventListener('scroll', () => {
+  const currentY = window.scrollY;
+  if (currentY > lastScrollY && currentY > 200) {
+    nav.classList.add('is-hidden');
+  } else {
+    nav.classList.remove('is-hidden');
+  }
+  lastScrollY = currentY;
+}, { passive: true });
+
+// ============ МОБИЛЬНОЕ МЕНЮ ============
+const navBurger = document.getElementById('navBurger');
+const navMobile = document.getElementById('navMobile');
+
+navBurger.addEventListener('click', () => {
+  navMobile.classList.toggle('is-open');
+  navBurger.classList.toggle('is-open');
+});
+
+navMobile.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navMobile.classList.remove('is-open');
+    navBurger.classList.remove('is-open');
   });
-}, { threshold: 0.5 });
+});
 
-sections.forEach(section => navObserver.observe(section));
+// ============ КАСТОМНЫЙ КУРСОР НАД ГАЛЕРЕЕЙ ============
+const cursor = document.getElementById('cursor');
+const galleryStrip = document.getElementById('galleryStrip');
+
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  window.addEventListener('mousemove', (e) => {
+    cursor.style.left = `${e.clientX}px`;
+    cursor.style.top = `${e.clientY}px`;
+  });
+
+  galleryStrip.querySelectorAll('.gallery__frame').forEach(frame => {
+    frame.addEventListener('mouseenter', () => cursor.classList.add('is-active'));
+    frame.addEventListener('mouseleave', () => cursor.classList.remove('is-active'));
+  });
+}
 
 // ============ RSVP ФОРМА ============
 const rsvpForm = document.getElementById('rsvpForm');
