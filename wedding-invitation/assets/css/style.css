@@ -645,3 +645,4 @@ body.site-entered .floral--hero-tl use, body.site-entered .floral--hero-br use {
 .footer__hashtag { font-size: 0.85rem; letter-spacing: 0.08em; color: var(--rose-deep); margin-bottom: 18px; }
 .footer__contacts { font-size: 0.82rem; opacity: 0.7; }
 .footer__contacts a { border-bottom: 1px solid var(--line); }
+.footer__credit { font-size: 0.72rem; opacity: 0.4; margin-top: 18px; }
