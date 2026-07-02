@@ -1,16 +1,21 @@
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
 // ============ ПЛАВНЫЙ ИНЕРЦИОННЫЙ СКРОЛЛ ============
+// Только для мыши/тачпада: на тач-экранах перехват скролла конфликтует
+// с нативной инерцией и ощущается дёргано
 const smoothWrapper = document.getElementById('smoothWrapper');
+const enableSmooth = !prefersReducedMotion && finePointer && !!smoothWrapper;
 let currentScroll = window.scrollY;
 let targetScroll = window.scrollY;
 window.__smoothScrollY = currentScroll;
 
 function setBodyHeight() {
+  if (!enableSmooth) return;
   document.body.style.height = `${smoothWrapper.scrollHeight}px`;
 }
 
-if (!prefersReducedMotion && smoothWrapper) {
+if (enableSmooth) {
   setBodyHeight();
   window.addEventListener('resize', setBodyHeight);
   if ('ResizeObserver' in window) {
@@ -32,7 +37,7 @@ if (!prefersReducedMotion && smoothWrapper) {
 }
 
 function getScrollY() {
-  return prefersReducedMotion ? window.scrollY : window.__smoothScrollY;
+  return enableSmooth ? window.__smoothScrollY : window.scrollY;
 }
 
 // ============ ЯКОРНАЯ НАВИГАЦИЯ (для фикс-обёртки плавного скролла) ============
@@ -43,7 +48,8 @@ function scrollToHash(hash) {
   const targetTop = target.getBoundingClientRect().top;
   const naturalOffset = targetTop - wrapperTop; // положение цели внутри обёртки, не зависит от текущего скролла
   const navHeight = window.innerWidth <= 780 ? 0 : 78;
-  window.scrollTo({ top: Math.max(naturalOffset - navHeight, 0), behavior: 'auto' });
+  // при инерционном скролле анимацию даёт lerp, при нативном — behavior:smooth
+  window.scrollTo({ top: Math.max(naturalOffset - navHeight, 0), behavior: enableSmooth ? 'auto' : 'smooth' });
   return true;
 }
 
@@ -59,9 +65,10 @@ if (window.location.hash) {
   window.addEventListener('load', () => scrollToHash(window.location.hash));
 }
 
-// ============ INTRO ============
+// ============ INTRO: ОТКРЫТИЕ КОНВЕРТА ============
 const intro = document.getElementById('intro');
-const introEnter = document.getElementById('introEnter');
+const envelope = document.getElementById('envelope');
+const envelopeSeal = document.getElementById('envelopeSeal');
 
 function enterSite() {
   intro.classList.add('is-hidden');
@@ -70,7 +77,13 @@ function enterSite() {
   setBodyHeight();
 }
 
-introEnter.addEventListener('click', enterSite);
+envelopeSeal.addEventListener('click', () => {
+  if (envelope.classList.contains('is-open')) return;
+  intro.classList.add('is-opening');
+  envelope.classList.add('is-open');                          // печать тает, клапан откидывается
+  setTimeout(() => envelope.classList.add('is-out'), 700);    // карточка выезжает из конверта
+  setTimeout(enterSite, 1750);                                // сцена растворяется, открывается сайт
+});
 document.body.style.overflow = 'hidden';
 
 // ============ ОБРАТНЫЙ ОТСЧЁТ (с флип-анимацией) ============
@@ -197,7 +210,7 @@ if (!prefersReducedMotion) {
 const cursorDot = document.getElementById('cursorDot');
 const cursorRing = document.getElementById('cursorRing');
 
-if (!prefersReducedMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+if (!prefersReducedMotion && finePointer) {
   let ringX = window.innerWidth / 2, ringY = window.innerHeight / 2;
   let mouseX = ringX, mouseY = ringY;
 
@@ -226,8 +239,9 @@ if (!prefersReducedMotion && window.matchMedia('(hover: hover) and (pointer: fin
 }
 
 // ============ МАГНИТНЫЕ КНОПКИ ============
-if (!prefersReducedMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-  document.querySelectorAll('.btn, .intro__enter').forEach(btn => {
+// btn--solid на всю ширину формы не магнитим — «уезжающий» сабмит раздражает
+if (!prefersReducedMotion && finePointer) {
+  document.querySelectorAll('.btn:not(.btn--solid)').forEach(btn => {
     btn.addEventListener('mousemove', (e) => {
       const rect = btn.getBoundingClientRect();
       const relX = e.clientX - rect.left - rect.width / 2;
@@ -241,7 +255,7 @@ if (!prefersReducedMotion && window.matchMedia('(hover: hover) and (pointer: fin
 }
 
 // ============ 3D-НАКЛОН КАРТОЧЕК ============
-if (!prefersReducedMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+if (!prefersReducedMotion && finePointer) {
   document.querySelectorAll('[data-tilt]').forEach(card => {
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
