@@ -182,7 +182,7 @@ const bgMusic = document.getElementById('bgMusic');
 soundToggle.addEventListener('click', () => {
   const isPlaying = soundToggle.classList.toggle('is-playing');
   soundToggle.setAttribute('aria-pressed', String(isPlaying));
-  soundToggle.setAttribute('aria-label', isPlaying ? 'Выключить музыку' : 'Включить музыку');
+  soundToggle.setAttribute('aria-label', isPlaying ? 'Вимкнути музику' : 'Увімкнути музику');
   if (isPlaying) {
     bgMusic.play().catch(() => {});
   } else {
@@ -280,6 +280,6 @@ rsvpForm.addEventListener('submit', (e) => {
     return;
   }
   rsvpSuccess.classList.add('is-visible');
-  rsvpForm.querySelector('.btn--solid').textContent = 'Ответ отправлен ✓';
+  rsvpForm.querySelector('.btn--solid').textContent = 'Відповідь надіслано ✓';
   rsvpForm.querySelector('.btn--solid').disabled = true;
 });

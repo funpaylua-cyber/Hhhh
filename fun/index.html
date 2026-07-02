@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Кнопка хорошего дня</title>
-<meta name="description" content="Нажми и получи немного тепла">
+<title>Кнопка гарного дня</title>
+<meta name="description" content="Натисни і отримай трохи тепла">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -88,26 +88,26 @@ body {
 <body>
 
 <div class="card">
-  <p class="eyebrow">Кнопка хорошего дня</p>
-  <p class="message" id="message">Нажми кнопку — получи немного тепла ✨</p>
-  <button class="btn" id="btn">Нажать ещё раз</button>
+  <p class="eyebrow">Кнопка гарного дня</p>
+  <p class="message" id="message">Натисни кнопку — отримай трохи тепла ✨</p>
+  <button class="btn" id="btn">Натиснути ще раз</button>
   <p class="counter" id="counter"></p>
 </div>
 
 <script>
 const messages = [
-  'Ты справляешься лучше, чем думаешь.',
-  'Сегодня отличный день, чтобы начать что-то новое.',
-  'Кто-то сейчас улыбается, вспомнив тебя.',
-  'Твоя идея достаточно хороша, чтобы попробовать.',
-  'Маленький шаг сегодня — большая разница через год.',
-  'Ты уже прошёл больше, чем кажется.',
-  'Отдохнуть — тоже часть плана. Разрешаю.',
-  'У тебя классный вкус. Серьёзно.',
-  'Сложные дни делают лёгкие ощутимее.',
-  'Кто-то бы многое отдал за твою настойчивость.',
-  'Сделай сегодня одну вещь только для себя.',
-  'Ты не обязан быть идеальным, чтобы быть достаточным.',
+  'Ти справляєшся краще, ніж думаєш.',
+  'Сьогодні чудовий день, щоб почати щось нове.',
+  'Хтось зараз усміхається, згадавши тебе.',
+  'Твоя ідея достатньо хороша, щоб спробувати.',
+  'Маленький крок сьогодні — велика різниця через рік.',
+  'Ти вже пройшов більше, ніж здається.',
+  'Відпочити — теж частина плану. Дозволяю.',
+  'У тебе класний смак. Серйозно.',
+  'Складні дні роблять легкі відчутнішими.',
+  'Хтось би багато віддав за твою наполегливість.',
+  'Зроби сьогодні одну річ тільки для себе.',
+  'Ти не зобов\'язаний бути ідеальним, щоб бути достатнім.',
 ];
 
 const messageEl = document.getElementById('message');
@@ -146,7 +146,7 @@ btn.addEventListener('click', () => {
     messageEl.classList.remove('is-swapping');
   }, 220);
   burstConfetti();
-  counterEl.textContent = clicks === 1 ? 'нажатий: 1' : `нажатий: ${clicks}`;
+  counterEl.textContent = clicks === 1 ? 'натискань: 1' : `натискань: ${clicks}`;
 });
 </script>
 </body>
