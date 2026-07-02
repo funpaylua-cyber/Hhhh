@@ -125,6 +125,7 @@
   <a href="#rsvp">RSVP</a>
 </div>
 
+<div id="smoothWrapper">
 <main>
 
   <!-- ===== HERO ===== -->
@@ -138,6 +139,7 @@
       </video>
       <div class="hero__scrim"></div>
       <span class="hero__video-tag">видео пары · плейсхолдер</span>
+      <span class="curtain" aria-hidden="true"></span>
     </div>
 
     <p class="hero__eyebrow reveal">Мы женимся</p>
@@ -183,21 +185,21 @@
     <h2 class="section-title section-title--light reveal">Детали дня</h2>
 
     <div class="details__grid">
-      <article class="detail-card reveal">
+      <article class="detail-card reveal" data-tilt>
         <svg class="detail-card__floral" viewBox="-30 -50 60 60" aria-hidden="true"><use href="#sprig" transform="scale(1.1)"/></svg>
         <h3>Церемония</h3>
         <p class="detail-card__time">16:00</p>
         <p>Выездная регистрация<br>Терраса «Тихого берега»</p>
       </article>
 
-      <article class="detail-card reveal">
+      <article class="detail-card reveal" data-tilt>
         <svg class="detail-card__floral" viewBox="-30 -50 60 60" aria-hidden="true"><use href="#sprig" transform="scale(1.1)"/></svg>
         <h3>Банкет</h3>
         <p class="detail-card__time">17:30</p>
         <p>Праздничный ужин<br>Главный зал усадьбы</p>
       </article>
 
-      <article class="detail-card reveal">
+      <article class="detail-card reveal" data-tilt>
         <svg class="detail-card__floral" viewBox="-30 -50 60 60" aria-hidden="true"><use href="#sprig" transform="scale(1.1)"/></svg>
         <h3>Дресс-код</h3>
         <p class="detail-card__time">Blush &amp; Sage</p>
@@ -262,11 +264,11 @@
     <p class="section-eyebrow reveal">Немного нас</p>
     <h2 class="section-title reveal">Галерея</h2>
     <div class="gallery__grid">
-      <div class="gallery__tile gallery__tile--a reveal"><span>фото пары</span></div>
-      <div class="gallery__tile gallery__tile--b reveal"><span>помолвка</span></div>
-      <div class="gallery__tile gallery__tile--c reveal"><span>путешествия</span></div>
-      <div class="gallery__tile gallery__tile--d reveal"><span>первая встреча</span></div>
-      <div class="gallery__tile gallery__tile--e reveal"><span>наши друзья</span></div>
+      <div class="gallery__tile gallery__tile--a reveal"><span>фото пары</span><span class="curtain" aria-hidden="true"></span></div>
+      <div class="gallery__tile gallery__tile--b reveal"><span>помолвка</span><span class="curtain" aria-hidden="true"></span></div>
+      <div class="gallery__tile gallery__tile--c reveal"><span>путешествия</span><span class="curtain" aria-hidden="true"></span></div>
+      <div class="gallery__tile gallery__tile--d reveal"><span>первая встреча</span><span class="curtain" aria-hidden="true"></span></div>
+      <div class="gallery__tile gallery__tile--e reveal"><span>наши друзья</span><span class="curtain" aria-hidden="true"></span></div>
     </div>
     <p class="gallery__hint reveal">Замените плейсхолдеры на реальные фотографии пары</p>
   </section>
@@ -321,6 +323,10 @@
   <p class="footer__hashtag">#АннаиМаксим2026</p>
   <p class="footer__contacts">По всем вопросам: <a href="tel:+70000000000">+7 (000) 000-00-00</a></p>
 </footer>
+</div>
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
 <script src="assets/js/main.js"></script>
 </body>
