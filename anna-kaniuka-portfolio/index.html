@@ -3,206 +3,266 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anna Kaniuka Ph — фотограф, Закарпаття</title>
-<meta name="description" content="Портфоліо фотографа Анни Канюки. Весільні, родинні та етно-фотозйомки на Закарпатті — Дубове, Тячів, Хуст.">
+<title>Anna Kaniuka — фотограф · Закарпаття</title>
+<meta name="description" content="Anna Kaniuka Ph — фотограф із Тячівщини. Весільні, родинні та етнозйомки серед карпатських краєвидів. Дубове · Тячів · Хуст.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --ink: #2c241c;
-  --paper: #faf5ee;
-  --paper-dim: #f2e9db;
-  --line: rgba(44,36,28,0.12);
-  --accent: #b5623f;
-  --accent-soft: #f0ded2;
-  --sage: #7c8768;
-  --font-serif: 'Cormorant Garamond', serif;
-  --font-sans: 'Jost', sans-serif;
-  --ease: cubic-bezier(.16,1,.3,1);
+  --bone: #f4f1ea;
+  --bone-2: #ece6db;
+  --ink: #1b1a16;
+  --ink-soft: #4a4740;
+  --stone: #8f897c;
+  --line: rgba(27,26,22,0.14);
+  --line-soft: rgba(27,26,22,0.08);
+  --accent: #6a6a4f;      /* delicate olive, used sparingly */
+  --paper-dark: #17160f;
+  --font-display: 'Fraunces', serif;
+  --font-sans: 'Inter', sans-serif;
+  --ease: cubic-bezier(.19,1,.22,1);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { background: var(--paper); color: var(--ink); font-family: var(--font-sans); font-weight: 300; overflow-x: hidden; }
+body {
+  background: var(--bone);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
 a { color: inherit; text-decoration: none; }
-h1, h2, h3 { font-family: var(--font-serif); font-weight: 500; }
 img, svg { display: block; max-width: 100%; }
+::selection { background: var(--ink); color: var(--bone); }
+
+/* film grain overlay on whole page */
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: 9998; pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* labels */
+.label { font-size: 0.7rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stone); font-weight: 400; }
+.idx { font-family: var(--font-display); font-style: italic; font-weight: 400; }
+
+/* custom cursor */
+.cursor { position: fixed; top: 0; left: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--ink); pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .35s var(--ease), height .35s var(--ease), background .35s, opacity .3s; mix-blend-mode: difference; }
+.cursor--ring { width: 40px; height: 40px; background: transparent; border: 1px solid var(--ink); }
+@media (hover: none), (max-width: 800px) { .cursor { display: none; } }
 
 /* nav */
 .nav {
-  position: sticky; top: 0; z-index: 50;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 20px clamp(20px, 5vw, 60px);
-  background: rgba(250,245,238,0.88);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
+  padding: 26px clamp(20px, 5vw, 64px);
+  transition: padding .5s var(--ease);
 }
-.nav__logo { font-family: var(--font-serif); font-size: 1.4rem; letter-spacing: 0.02em; }
-.nav__logo em { font-style: italic; color: var(--accent); }
-.nav__links { display: flex; gap: clamp(16px, 3vw, 32px); align-items: center; }
-.nav__links a { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.72; transition: opacity .2s; }
-.nav__links a:hover { opacity: 1; }
-.nav__cta { padding: 9px 20px; background: var(--ink); color: var(--paper) !important; border-radius: 999px; opacity: 1 !important; }
-@media (max-width: 700px) { .nav__links a:not(.nav__cta) { display: none; } }
+.nav.is-scrolled { padding-top: 18px; padding-bottom: 18px; background: rgba(244,241,234,0.82); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line-soft); }
+.nav__logo { font-family: var(--font-display); font-size: 1.28rem; font-weight: 400; letter-spacing: 0.01em; }
+.nav__logo em { font-style: italic; }
+.nav__menu { display: flex; gap: clamp(18px,2.6vw,40px); align-items: center; }
+.nav__menu a { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; position: relative; opacity: 0.75; transition: opacity .3s; }
+.nav__menu a::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 0; height: 1px; background: var(--ink); transition: width .4s var(--ease); }
+.nav__menu a:hover { opacity: 1; }
+.nav__menu a:hover::after { width: 100%; }
+@media (max-width: 760px) { .nav__menu a:not(.nav__book) { display: none; } }
+.nav__book { border: 1px solid var(--line); padding: 9px 18px; border-radius: 999px; opacity: 1 !important; }
+.nav__book::after { display: none; }
+.nav__book:hover { background: var(--ink); color: var(--bone); border-color: var(--ink); }
 
 /* hero */
-.hero {
-  padding: clamp(60px,10vw,110px) clamp(20px, 6vw, 80px) clamp(50px,8vw,90px);
-  display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(30px,6vw,70px); align-items: center;
-  max-width: 1200px; margin: 0 auto;
-}
-.hero__eyebrow { font-size: 0.82rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; }
-.hero__title { font-size: clamp(2.6rem, 6.5vw, 4.6rem); line-height: 1.05; margin-bottom: 24px; }
-.hero__title em { font-style: italic; color: var(--accent); }
-.hero__sub { max-width: 46ch; font-size: 1.12rem; line-height: 1.75; opacity: 0.72; margin-bottom: 34px; }
-.hero__actions { display: flex; gap: 14px; flex-wrap: wrap; }
-.hero__photo { aspect-ratio: 4/5; border-radius: 18px; position: relative; overflow: hidden; background: linear-gradient(155deg,#e7cdb2,#b5623f 55%,#7c8768); }
-.hero__photo::after { content: 'фото фотографа · плейсхолдер'; position: absolute; left: 16px; bottom: 14px; font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; opacity: 0.85; }
-@media (max-width: 820px) { .hero { grid-template-columns: 1fr; } .hero__photo { order: -1; max-width: 320px; margin: 0 auto; } }
+.hero { padding: clamp(130px,17vh,190px) clamp(20px,5vw,64px) clamp(50px,7vw,80px); position: relative; }
+.hero__top { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--line); padding-bottom: 20px; margin-bottom: clamp(34px,5vw,60px); flex-wrap: wrap; gap: 12px; }
+.hero__title { font-family: var(--font-display); font-weight: 300; font-size: clamp(3.4rem, 13vw, 12rem); line-height: 0.92; letter-spacing: -0.02em; }
+.hero__title em { font-style: italic; font-weight: 300; }
+.hero__grid { display: grid; grid-template-columns: 1fr auto; gap: clamp(30px,6vw,80px); align-items: end; margin-top: clamp(30px,4vw,50px); }
+.hero__lede { max-width: 40ch; font-size: clamp(1.05rem,1.6vw,1.35rem); line-height: 1.7; color: var(--ink-soft); font-weight: 300; }
+.hero__meta { text-align: right; display: flex; flex-direction: column; gap: 10px; }
+.hero__meta .label { display: block; }
+.hero__meta strong { font-family: var(--font-display); font-weight: 400; font-size: 1.05rem; }
+@media (max-width: 720px) { .hero__grid { grid-template-columns: 1fr; align-items: start; } .hero__meta { text-align: left; } }
 
-.btn { display: inline-flex; align-items: center; gap: 9px; padding: 14px 30px; border-radius: 999px; font-size: 0.84rem; letter-spacing: 0.06em; text-transform: uppercase; transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s, color .25s; }
-.btn--primary { background: var(--ink); color: var(--paper); }
-.btn--primary:hover { transform: translateY(-2px); box-shadow: 0 14px 28px rgba(44,36,28,0.22); }
-.btn--ghost { border: 1px solid var(--line); }
-.btn--ghost:hover { background: var(--paper-dim); }
+.scroll-hint { display: inline-flex; align-items: center; gap: 10px; margin-top: clamp(40px,6vw,70px); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); }
+.scroll-hint span { width: 46px; height: 1px; background: var(--stone); position: relative; overflow: hidden; }
+.scroll-hint span::after { content: ''; position: absolute; inset: 0; background: var(--ink); animation: slide 2.4s var(--ease) infinite; }
+@keyframes slide { 0% { transform: translateX(-100%); } 60%,100% { transform: translateX(100%); } }
 
-/* marquee */
-.marquee { background: var(--accent); color: var(--paper); overflow: hidden; padding: 15px 0; white-space: nowrap; }
-.marquee__track { display: inline-flex; animation: marquee 24s linear infinite; }
-.marquee__track span { font-family: var(--font-serif); font-style: italic; font-size: 1.15rem; padding: 0 28px; }
+/* ticker */
+.ticker { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; padding: 16px 0; white-space: nowrap; }
+.ticker__track { display: inline-flex; animation: marquee 34s linear infinite; }
+.ticker__track > * { display: inline-flex; align-items: center; }
+.ticker__track span { font-family: var(--font-display); font-style: italic; font-size: 1.5rem; padding: 0 30px; font-weight: 300; }
+.ticker__track b { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-section { padding: clamp(70px,10vw,110px) clamp(20px, 6vw, 80px); max-width: 1200px; margin: 0 auto; }
-.section-head { margin-bottom: 48px; }
-.eyebrow { font-size: 0.8rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-.title { font-size: clamp(2rem, 5vw, 2.9rem); }
+/* section frame */
+section { padding: clamp(80px,11vw,150px) clamp(20px,5vw,64px); max-width: 1440px; margin: 0 auto; }
+.head { display: grid; grid-template-columns: auto 1fr; gap: clamp(20px,4vw,60px); align-items: baseline; margin-bottom: clamp(46px,6vw,80px); }
+.head__num { font-family: var(--font-display); font-style: italic; font-size: clamp(1.2rem,2vw,1.6rem); color: var(--accent); }
+.head__title { font-family: var(--font-display); font-weight: 300; font-size: clamp(2.1rem,5.5vw,4rem); line-height: 1; letter-spacing: -0.01em; }
+.head__title em { font-style: italic; }
 
-.reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
-.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+.reveal.in { opacity: 1; transform: none; }
+.reveal[data-d="1"] { transition-delay: .08s; }
+.reveal[data-d="2"] { transition-delay: .16s; }
+.reveal[data-d="3"] { transition-delay: .24s; }
 
-/* about */
-.about { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(30px,6vw,80px); align-items: center; }
-.about__photo { aspect-ratio: 4/5; border-radius: 18px; background: linear-gradient(160deg,#d9c3a0,#8a6a4a); position: relative; overflow: hidden; }
-.about__photo::after { content: 'Дубове · Тячів · Хуст'; position: absolute; left: 16px; bottom: 14px; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; opacity: 0.9; }
-.about__text { font-size: 1.08rem; line-height: 1.85; opacity: 0.8; }
-.about__text p + p { margin-top: 18px; }
-@media (max-width: 820px) { .about { grid-template-columns: 1fr; } }
+/* manifesto */
+.manifesto { max-width: 1100px; }
+.manifesto p { font-family: var(--font-display); font-weight: 300; font-size: clamp(1.6rem,3.6vw,2.9rem); line-height: 1.32; letter-spacing: -0.01em; }
+.manifesto em { font-style: italic; color: var(--accent); }
+.manifesto .sig { margin-top: 40px; font-family: var(--font-sans); font-size: 0.82rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); }
 
-/* stats */
-.stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 40px clamp(20px,6vw,80px); }
-.stats div { text-align: center; }
-.stats .num { font-family: var(--font-serif); font-size: clamp(2rem,4vw,2.6rem); color: var(--accent); }
-.stats span { font-size: 0.82rem; letter-spacing: 0.04em; opacity: 0.65; }
-@media (max-width: 700px) { .stats { grid-template-columns: repeat(2, 1fr); row-gap: 28px; } }
+/* works — editorial asymmetric gallery */
+.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: clamp(32px,4vw,48px); }
+.filters button { font-family: var(--font-sans); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: none; transition: background .35s var(--ease), color .35s, border-color .35s; }
+.filters button.is-active, .filters button:hover { background: var(--ink); color: var(--bone); border-color: var(--ink); }
 
-/* gallery */
-.filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 34px; }
-.filters button { font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 0.04em; padding: 9px 18px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; transition: background .25s, color .25s; }
-.filters button.is-active, .filters button:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-.gallery__grid { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 170px; gap: 14px; }
-.gallery__tile { border-radius: 10px; position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 16px; transition: opacity .3s, transform .3s var(--ease); }
-.gallery__tile::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(20,15,10,0.55)); }
-.gallery__tile span { position: relative; z-index: 1; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; }
-.gallery__tile:hover { transform: translateY(-3px); }
-.gallery__tile.is-hidden { display: none; }
-.gallery__tile--1 { grid-column: span 3; grid-row: span 2; background: linear-gradient(150deg,#e3ceb0,#a15a3c); }
-.gallery__tile--2 { grid-column: span 3; background: linear-gradient(150deg,#eadfc9,#c98f5e); }
-.gallery__tile--3 { grid-column: span 3; background: linear-gradient(150deg,#8b9977,#4e5c3d); }
-.gallery__tile--4 { grid-column: span 2; background: linear-gradient(150deg,#f0ded2,#b5623f); }
-.gallery__tile--5 { grid-column: span 4; background: linear-gradient(150deg,#d6c6a8,#7c8768); }
-.gallery__tile--6 { grid-column: span 2; grid-row: span 2; background: linear-gradient(150deg,#c98f5e,#5c4530); }
-.gallery__tile--7 { grid-column: span 4; background: linear-gradient(150deg,#eadfc9,#8b9977); }
-@media (max-width: 720px) {
-  .gallery__grid { grid-template-columns: repeat(2,1fr); grid-auto-rows: 150px; }
-  .gallery__tile { grid-column: span 1 !important; grid-row: span 1 !important; }
+.works { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(16px,2vw,30px); }
+.work { grid-column: span 6; }
+.work--tall { grid-column: span 6; grid-row: span 2; }
+.work--wide { grid-column: span 8; }
+.work--narrow { grid-column: span 4; }
+.work:nth-child(2) { margin-top: clamp(40px,6vw,90px); }
+.work__frame { position: relative; overflow: hidden; border-radius: 3px; }
+.work__frame::after { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity: 0.09; mix-blend-mode: overlay; pointer-events: none; }
+.work__img { aspect-ratio: 3/4; transition: transform 1.3s var(--ease), filter .8s; transform: scale(1.02); filter: grayscale(0.15) contrast(1.02); }
+.work--wide .work__img, .work--tall .work__img { aspect-ratio: 4/3; }
+.work--tall .work__img { aspect-ratio: 3/4.6; }
+.work__frame:hover .work__img { transform: scale(1.06); filter: grayscale(0) contrast(1.05); }
+.work__cap { display: flex; justify-content: space-between; align-items: baseline; padding-top: 14px; border-top: 1px solid var(--line); margin-top: 14px; gap: 12px; }
+.work__cap h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.15rem; }
+.work__cap .meta { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stone); white-space: nowrap; }
+.work.is-hidden { display: none; }
+
+/* filmic placeholder tones — desaturated, premium */
+.t1 { background: linear-gradient(150deg,#c7c1b2,#726c5c); }
+.t2 { background: linear-gradient(150deg,#b9b3a4,#4f4d43); }
+.t3 { background: linear-gradient(155deg,#8f9484,#565a4c); }
+.t4 { background: linear-gradient(150deg,#d3cbba,#8a7f6b); }
+.t5 { background: linear-gradient(150deg,#a9a294,#5b564a); }
+.t6 { background: linear-gradient(155deg,#c2b8a6,#736a56); }
+.t7 { background: linear-gradient(150deg,#9ba08e,#4a4d3f); }
+
+@media (max-width: 820px) {
+  .works { grid-template-columns: repeat(2, 1fr); }
+  .work, .work--tall, .work--wide, .work--narrow { grid-column: span 1 !important; grid-row: auto !important; }
+  .work:nth-child(2) { margin-top: 0; }
 }
 
-/* services */
-.services__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.service-card { background: var(--paper-dim); border: 1px solid var(--line); border-radius: 16px; padding: 30px 26px; transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
-.service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 36px rgba(44,36,28,0.1); }
-.service-card h3 { font-size: 1.4rem; margin-bottom: 10px; }
-.service-card p { font-size: 0.92rem; line-height: 1.65; opacity: 0.68; margin-bottom: 16px; }
-.service-card span { font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
-@media (max-width: 820px) { .services__grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px) { .services__grid { grid-template-columns: 1fr; } }
+/* about */
+.about { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(34px,6vw,90px); align-items: center; }
+.about__portrait { position: relative; overflow: hidden; border-radius: 3px; }
+.about__portrait .work__img { aspect-ratio: 4/5; background: linear-gradient(160deg,#cbc4b4,#6f6857); transform: scale(1.02); }
+.about__portrait::after { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity: 0.09; mix-blend-mode: overlay; }
+.about__portrait span { position: absolute; left: 16px; bottom: 14px; z-index: 1; color: #fff; }
+.about__lede { font-family: var(--font-display); font-weight: 300; font-size: clamp(1.5rem,2.6vw,2.1rem); line-height: 1.4; letter-spacing: -0.01em; margin-bottom: 26px; }
+.about__lede em { font-style: italic; }
+.about__body { color: var(--ink-soft); font-size: 1.02rem; line-height: 1.85; max-width: 46ch; }
+.about__body p + p { margin-top: 16px; }
+@media (max-width: 820px) { .about { grid-template-columns: 1fr; } .about__portrait { max-width: 380px; } }
+
+/* stats strip */
+.stats { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid var(--line); }
+.stats > div { padding: clamp(30px,4vw,50px) clamp(14px,2vw,30px); border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); }
+.stats > div:nth-child(4n) { border-right: none; }
+.stats .n { font-family: var(--font-display); font-weight: 300; font-size: clamp(2.4rem,5vw,3.6rem); line-height: 1; letter-spacing: -0.02em; }
+.stats .n em { font-style: italic; color: var(--accent); }
+.stats .k { margin-top: 10px; font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); }
+@media (max-width: 700px) { .stats { grid-template-columns: repeat(2,1fr); } .stats > div:nth-child(2n) { border-right: none; } }
+
+/* services list */
+.svc { border-top: 1px solid var(--ink); }
+.svc__row { display: grid; grid-template-columns: auto 1fr auto; gap: clamp(16px,3vw,40px); align-items: center; padding: clamp(26px,3.4vw,42px) clamp(16px,2vw,28px); border-bottom: 1px solid var(--line); position: relative; z-index: 0; transition: color .4s var(--ease); }
+.svc__row::before { content: ''; position: absolute; inset: 0; background: var(--ink); z-index: -1; transform: scaleX(0); transform-origin: left; transition: transform .6s var(--ease); }
+.svc__row:hover { color: var(--bone); }
+.svc__row:hover::before { transform: scaleX(1); }
+.svc__row:hover .svc__num, .svc__row:hover .svc__desc { color: rgba(244,241,234,0.7); }
+.svc__num { font-family: var(--font-display); font-style: italic; font-size: 1rem; color: var(--accent); transition: color .4s; }
+.svc__name { font-family: var(--font-display); font-weight: 300; font-size: clamp(1.5rem,3.4vw,2.4rem); letter-spacing: -0.01em; }
+.svc__desc { font-size: 0.92rem; color: var(--stone); max-width: 34ch; text-align: right; transition: color .4s; }
+@media (max-width: 720px) { .svc__row { grid-template-columns: auto 1fr; } .svc__desc { display: none; } }
 
 /* quote */
-.quote { text-align: center; padding: clamp(60px,10vw,100px) clamp(20px,6vw,80px); }
-.quote blockquote { font-family: var(--font-serif); font-style: italic; font-size: clamp(1.6rem, 4vw, 2.6rem); line-height: 1.4; max-width: 18ch; margin: 0 auto 20px; }
-.quote cite { font-style: normal; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.6; }
+.quote { text-align: center; max-width: 1200px; }
+.quote blockquote { font-family: var(--font-display); font-weight: 300; font-style: italic; font-size: clamp(1.9rem,5vw,3.6rem); line-height: 1.3; letter-spacing: -0.01em; }
+.quote blockquote span { font-style: normal; color: var(--accent); }
+.quote cite { display: block; margin-top: 30px; font-style: normal; font-size: 0.76rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); }
 
 /* contact */
-.contact { text-align: center; }
-.contact__box { background: var(--ink); color: var(--paper); border-radius: 28px; padding: clamp(50px, 9vw, 100px) 24px; }
-.contact__eyebrow { font-size: 0.82rem; letter-spacing: 0.28em; text-transform: uppercase; color: #d59a7c; margin-bottom: 20px; }
-.contact__title { font-size: clamp(2.1rem, 6vw, 3.6rem); margin-bottom: 22px; }
-.contact__title em { font-style: italic; color: #d59a7c; }
-.contact p.sub { opacity: 0.68; max-width: 46ch; margin: 0 auto 34px; line-height: 1.7; }
-.contact .btn--primary { background: var(--paper); color: var(--ink); }
-.contact__location { margin-top: 26px; font-size: 0.85rem; opacity: 0.55; letter-spacing: 0.04em; }
+.contact { max-width: none; padding: 0; }
+.contact__inner { background: var(--paper-dark); color: var(--bone); padding: clamp(70px,11vw,150px) clamp(20px,6vw,80px); position: relative; overflow: hidden; }
+.contact__inner::after { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity: 0.05; pointer-events: none; }
+.contact__inner .label { color: rgba(244,241,234,0.5); }
+.contact__title { font-family: var(--font-display); font-weight: 300; font-size: clamp(2.6rem,8vw,6.4rem); line-height: 0.98; letter-spacing: -0.02em; margin: 22px 0 40px; }
+.contact__title em { font-style: italic; }
+.contact__link { display: inline-flex; align-items: center; gap: 16px; font-family: var(--font-display); font-size: clamp(1.4rem,3vw,2.2rem); font-weight: 300; border-bottom: 1px solid rgba(244,241,234,0.3); padding-bottom: 8px; transition: gap .4s var(--ease), border-color .4s; }
+.contact__link:hover { gap: 26px; border-color: var(--bone); }
+.contact__link svg { width: 30px; height: 30px; }
+.contact__foot { margin-top: clamp(60px,9vw,110px); display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px; border-top: 1px solid rgba(244,241,234,0.16); padding-top: 30px; }
+.contact__foot .col { display: flex; flex-direction: column; gap: 8px; }
+.contact__foot a { font-size: 0.86rem; opacity: 0.75; transition: opacity .3s; }
+.contact__foot a:hover { opacity: 1; }
+.contact__foot .big { font-family: var(--font-display); font-size: 1.4rem; opacity: 1; }
 
-footer { text-align: center; padding: 50px 24px; opacity: 0.5; font-size: 0.82rem; }
+footer { text-align: center; padding: 34px 24px; font-size: 0.76rem; letter-spacing: 0.08em; color: var(--stone); background: var(--paper-dark); }
 </style>
 </head>
 <body>
 
-<header class="nav">
+<div class="cursor" id="cursor"></div>
+
+<header class="nav" id="nav">
   <a href="#" class="nav__logo">Anna <em>Kaniuka</em></a>
-  <nav class="nav__links">
+  <nav class="nav__menu">
+    <a href="#works">Роботи</a>
     <a href="#about">Про мене</a>
-    <a href="#work">Роботи</a>
     <a href="#services">Послуги</a>
     <a href="https://instagram.com/anna_kaniuka.ph" target="_blank" rel="noopener">Instagram</a>
-    <a href="#contact" class="nav__cta">Записатись</a>
+    <a href="#contact" class="nav__book">Записатись</a>
   </nav>
 </header>
 
 <section class="hero">
-  <div>
-    <p class="hero__eyebrow reveal">Фотограф · Тячівський район, Закарпаття</p>
-    <h1 class="hero__title reveal">Передаю <em>почуття</em><br>у кожному кадрі</h1>
-    <p class="hero__sub reveal">Знімаю фотографії про красу, гармонію та світло — весілля, родини, хрестини та етнозйомки у вишиванках серед карпатських краєвидів. Працюю в Дубовому, Тячеві та Хусті.</p>
-    <div class="hero__actions reveal">
-      <a class="btn btn--primary" href="#contact">Забронювати зйомку</a>
-      <a class="btn btn--ghost" href="#work">Дивитись роботи</a>
+  <div class="hero__top">
+    <span class="label">Фотограф · Тячівщина, Закарпаття</span>
+    <span class="label">© MMXXVI</span>
+  </div>
+  <h1 class="hero__title reveal">Світло,<br>яке <em>відчуваєш</em></h1>
+  <div class="hero__grid">
+    <p class="hero__lede reveal" data-d="1">Знімаю красу, гармонію та почуття — весілля, родини й етнообрази у вишиванках серед карпатських краєвидів.</p>
+    <div class="hero__meta reveal" data-d="2">
+      <span class="label">Локації</span>
+      <strong>Дубове · Тячів · Хуст</strong>
     </div>
   </div>
-  <div class="hero__photo reveal"></div>
+  <div class="scroll-hint reveal" data-d="3">Гортайте <span></span></div>
 </section>
 
-<div class="marquee" aria-hidden="true">
-  <div class="marquee__track">
-    <span>Весілля</span><span>Родинні зйомки</span><span>Етно у вишиванках</span><span>Хрестини</span><span>Портрет</span>
-    <span>Весілля</span><span>Родинні зйомки</span><span>Етно у вишиванках</span><span>Хрестини</span><span>Портрет</span>
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <span>Весілля</span><b></b><span>Родинні зйомки</span><b></b><span>Етно у вишиванках</span><b></b><span>Хрестини</span><b></b><span>Портрет</span><b></b>
+    <span>Весілля</span><b></b><span>Родинні зйомки</span><b></b><span>Етно у вишиванках</span><b></b><span>Хрестини</span><b></b><span>Портрет</span><b></b>
   </div>
 </div>
 
-<section id="about">
-  <div class="about">
-    <div class="about__photo reveal"></div>
-    <div class="reveal">
-      <p class="eyebrow">Про мене</p>
-      <h2 class="title" style="margin-bottom:22px">Анна Канюка</h2>
-      <div class="about__text">
-        <p>Я фотограф із Тячівського району — знімаю там, де виросла: у Дубовому, Тячеві та Хусті, серед гір Закарпаття. Для мене фотографія — це не постановка, а спосіб зберегти справжні почуття: тепло родини, ніжність весільного дня, гордість за традиції.</p>
-        <p>Люблю етнозйомки у вишиванках — коли краса природи зустрічається з українською автентикою. Кожна зйомка — це історія про красу, гармонію та світло, розказана вашими кадрами.</p>
-      </div>
-    </div>
+<section id="intro">
+  <div class="manifesto reveal">
+    <p>Для мене фотографія — не постановка, а спосіб <em>зберегти справжнє</em>: тепло родини, ніжність весільного дня та гордість за наші традиції.</p>
+    <p class="sig">— Anna Kaniuka Ph</p>
   </div>
 </section>
 
-<div class="stats reveal">
-  <div><div class="num">190+</div><span>фотозйомок</span></div>
-  <div><div class="num">1500+</div><span>підписників в Instagram</span></div>
-  <div><div class="num">3</div><span>міста роботи</span></div>
-  <div><div class="num">100%</div><span>живих емоцій</span></div>
-</div>
-
-<section id="work">
-  <div class="section-head reveal">
-    <p class="eyebrow">Обране</p>
-    <h2 class="title">Роботи</h2>
+<section id="works">
+  <div class="head">
+    <span class="head__num">01</span>
+    <h2 class="head__title">Обрані <em>роботи</em></h2>
   </div>
   <div class="filters reveal">
     <button class="is-active" data-filter="all">Усі</button>
@@ -212,93 +272,139 @@ footer { text-align: center; padding: 50px 24px; opacity: 0.5; font-size: 0.82re
     <button data-filter="kids">Хрестини</button>
     <button data-filter="nature">Карпати</button>
   </div>
-  <div class="gallery__grid">
-    <div class="gallery__tile gallery__tile--1 reveal" data-cat="ethno"><span>Етно · вишиванка</span></div>
-    <div class="gallery__tile gallery__tile--2 reveal" data-cat="family"><span>Родинна зйомка</span></div>
-    <div class="gallery__tile gallery__tile--3 reveal" data-cat="nature"><span>Гори Тячівщини</span></div>
-    <div class="gallery__tile gallery__tile--4 reveal" data-cat="wedding"><span>Весілля</span></div>
-    <div class="gallery__tile gallery__tile--5 reveal" data-cat="kids"><span>Хрестини</span></div>
-    <div class="gallery__tile gallery__tile--6 reveal" data-cat="ethno"><span>Етно · портрет</span></div>
-    <div class="gallery__tile gallery__tile--7 reveal" data-cat="wedding"><span>Весільний день</span></div>
+  <div class="works">
+    <figure class="work work--tall reveal" data-cat="ethno">
+      <div class="work__frame"><div class="work__img t1"></div></div>
+      <figcaption class="work__cap"><h3>Вінок і вишиванка</h3><span class="meta">Етно · 2026</span></figcaption>
+    </figure>
+    <figure class="work reveal" data-cat="family" data-d="1">
+      <div class="work__frame"><div class="work__img t2"></div></div>
+      <figcaption class="work__cap"><h3>Родинне тепло</h3><span class="meta">Родина</span></figcaption>
+    </figure>
+    <figure class="work reveal" data-cat="nature">
+      <div class="work__frame"><div class="work__img t3"></div></div>
+      <figcaption class="work__cap"><h3>Гори Тячівщини</h3><span class="meta">Карпати</span></figcaption>
+    </figure>
+    <figure class="work work--wide reveal" data-cat="wedding" data-d="1">
+      <div class="work__frame"><div class="work__img t4"></div></div>
+      <figcaption class="work__cap"><h3>Весільний день</h3><span class="meta">Весілля · 2026</span></figcaption>
+    </figure>
+    <figure class="work work--narrow reveal" data-cat="kids">
+      <div class="work__frame"><div class="work__img t5"></div></div>
+      <figcaption class="work__cap"><h3>Хрестини</h3><span class="meta">Свято</span></figcaption>
+    </figure>
+    <figure class="work reveal" data-cat="ethno">
+      <div class="work__frame"><div class="work__img t6"></div></div>
+      <figcaption class="work__cap"><h3>Етнопортрет</h3><span class="meta">Етно</span></figcaption>
+    </figure>
+    <figure class="work reveal" data-cat="wedding" data-d="1">
+      <div class="work__frame"><div class="work__img t7"></div></div>
+      <figcaption class="work__cap"><h3>Наречена</h3><span class="meta">Весілля</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="stats reveal">
+  <div><div class="n">190<em>+</em></div><div class="k">фотозйомок</div></div>
+  <div><div class="n">1500<em>+</em></div><div class="k">в Instagram</div></div>
+  <div><div class="n">03</div><div class="k">міста роботи</div></div>
+  <div><div class="n">10</div><div class="k">років у кадрі</div></div>
+</div>
+
+<section id="about">
+  <div class="about">
+    <div class="about__portrait reveal">
+      <div class="work__frame"><div class="work__img"></div></div>
+      <span class="label">Anna Kaniuka</span>
+    </div>
+    <div>
+      <div class="head" style="margin-bottom:34px">
+        <span class="head__num">02</span>
+        <h2 class="head__title">Про <em>мене</em></h2>
+      </div>
+      <p class="about__lede reveal" data-d="1">Я фотограф із Тячівщини — знімаю там, де <em>виросла</em>, серед гір Закарпаття.</p>
+      <div class="about__body reveal" data-d="2">
+        <p>Почала з простого бажання зберігати миті — і залишилась у кадрі назавжди. Найбільше люблю етнозйомки у вишиванках, коли краса природи зустрічається з українською автентикою.</p>
+        <p>Кожна зйомка — це історія про красу, гармонію та світло, розказана вашими власними кадрами.</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <section id="services">
-  <div class="section-head reveal">
-    <p class="eyebrow">Що знімаю</p>
-    <h2 class="title">Послуги</h2>
+  <div class="head">
+    <span class="head__num">03</span>
+    <h2 class="head__title">Що <em>знімаю</em></h2>
   </div>
-  <div class="services__grid">
-    <div class="service-card reveal">
-      <h3>Весільна зйомка</h3>
-      <p>Повний весільний день або окрема частина — збори, церемонія, прогулянка, банкет.</p>
-      <span>За домовленістю</span>
-    </div>
-    <div class="service-card reveal">
-      <h3>Родинна фотосесія</h3>
-      <p>Теплі кадри всієї родини — вдома, на природі або в гостях у бабусі з дідусем.</p>
-      <span>За домовленістю</span>
-    </div>
-    <div class="service-card reveal">
-      <h3>Етнозйомка у вишиванках</h3>
-      <p>Автентичні образи серед карпатських краєвидів або в українській хаті.</p>
-      <span>За домовленістю</span>
-    </div>
-    <div class="service-card reveal">
-      <h3>Хрестини та свята</h3>
-      <p>Зворушливі моменти важливого дня — без метушні, з увагою до деталей.</p>
-      <span>За домовленістю</span>
-    </div>
-    <div class="service-card reveal">
-      <h3>Індивідуальний портрет</h3>
-      <p>Персональна зйомка для себе, соцмереж чи в подарунок близьким.</p>
-      <span>За домовленістю</span>
-    </div>
-    <div class="service-card reveal">
-      <h3>Виїзна зйомка</h3>
-      <p>Готова виїхати за межі Тячівського району — деталі обговорюємо особисто.</p>
-      <span>За домовленістю</span>
-    </div>
+  <div class="svc reveal">
+    <div class="svc__row"><span class="svc__num">01</span><span class="svc__name">Весільна зйомка</span><span class="svc__desc">Повний день або окрема частина свята</span></div>
+    <div class="svc__row"><span class="svc__num">02</span><span class="svc__name">Родинна фотосесія</span><span class="svc__desc">Теплі кадри всієї родини на природі чи вдома</span></div>
+    <div class="svc__row"><span class="svc__num">03</span><span class="svc__name">Етно у вишиванках</span><span class="svc__desc">Автентичні образи серед карпатських краєвидів</span></div>
+    <div class="svc__row"><span class="svc__num">04</span><span class="svc__name">Хрестини та свята</span><span class="svc__desc">Зворушливі моменти важливого дня</span></div>
+    <div class="svc__row"><span class="svc__num">05</span><span class="svc__name">Індивідуальний портрет</span><span class="svc__desc">Персональна зйомка для себе чи в подарунок</span></div>
   </div>
 </section>
 
 <section class="quote">
-  <blockquote class="reveal">«Фотографії про красу, гармонію та світло»</blockquote>
-  <cite class="reveal">— Anna Kaniuka Ph</cite>
+  <blockquote class="reveal">«Передаю почуття<br>у <span>кожному кадрі</span>»</blockquote>
+  <cite class="reveal" data-d="1">Anna Kaniuka Ph</cite>
 </section>
 
 <section id="contact" class="contact">
-  <div class="contact__box reveal">
-    <p class="contact__eyebrow">На зв'язку</p>
-    <h2 class="contact__title">Запишіться на <em>зйомку</em></h2>
-    <p class="sub">Пишіть у Instagram у прямі повідомлення — відповідаю особисто та підберу дату й локацію під ваше свято.</p>
-    <a class="btn btn--primary" href="https://instagram.com/anna_kaniuka.ph" target="_blank" rel="noopener">Написати в Instagram · @anna_kaniuka.ph</a>
-    <p class="contact__location">Дубове · Тячів · Хуст, Закарпаття</p>
+  <div class="contact__inner reveal">
+    <span class="label">На зв'язку</span>
+    <h2 class="contact__title">Запишіться<br>на <em>зйомку</em></h2>
+    <a class="contact__link" href="https://instagram.com/anna_kaniuka.ph" target="_blank" rel="noopener">
+      Написати в Instagram
+      <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.3"/></svg>
+    </a>
+    <div class="contact__foot">
+      <div class="col">
+        <span class="label">Instagram</span>
+        <a class="big" href="https://instagram.com/anna_kaniuka.ph" target="_blank" rel="noopener">@anna_kaniuka.ph</a>
+      </div>
+      <div class="col" style="text-align:right">
+        <span class="label">Локації зйомок</span>
+        <a>Дубове · Тячів · Хуст</a>
+      </div>
+    </div>
   </div>
 </section>
 
-<footer>© Anna Kaniuka Ph · Фотограф<br><span style="opacity:0.6">developed by vasil</span></footer>
+<footer>© MMXXVI · Anna Kaniuka Ph — Фотограф · developed by vasil</footer>
 
 <script>
-const revealEls = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
-}, { threshold: 0.12 });
-revealEls.forEach(el => io.observe(el));
+// reveal
+const io = new IntersectionObserver((es) => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.14 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-const filterButtons = document.querySelectorAll('.filters button');
-const tiles = document.querySelectorAll('.gallery__tile');
-filterButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterButtons.forEach(b => b.classList.remove('is-active'));
-    btn.classList.add('is-active');
-    const filter = btn.dataset.filter;
-    tiles.forEach(tile => {
-      const show = filter === 'all' || tile.dataset.cat === filter;
-      tile.classList.toggle('is-hidden', !show);
-    });
+// nav scrolled state
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('is-scrolled', scrollY > 40), { passive: true });
+
+// gallery filter
+const fbtns = document.querySelectorAll('.filters button');
+const works = document.querySelectorAll('.work');
+fbtns.forEach(b => b.addEventListener('click', () => {
+  fbtns.forEach(x => x.classList.remove('is-active'));
+  b.classList.add('is-active');
+  const f = b.dataset.filter;
+  works.forEach(w => w.classList.toggle('is-hidden', !(f === 'all' || w.dataset.cat === f)));
+}));
+
+// custom cursor
+const cur = document.getElementById('cursor');
+if (matchMedia('(hover: hover)').matches && innerWidth > 800) {
+  let x = innerWidth/2, y = innerHeight/2, cx = x, cy = y;
+  addEventListener('mousemove', e => { x = e.clientX; y = e.clientY; });
+  (function loop(){ cx += (x-cx)*0.22; cy += (y-cy)*0.22; cur.style.transform = `translate(${cx}px,${cy}px) translate(-50%,-50%)`; requestAnimationFrame(loop); })();
+  document.querySelectorAll('a, button, .work__frame').forEach(el => {
+    el.addEventListener('mouseenter', () => cur.classList.add('cursor--ring'));
+    el.addEventListener('mouseleave', () => cur.classList.remove('cursor--ring'));
   });
-});
+} else { cur.style.display = 'none'; }
 </script>
 </body>
 </html>
