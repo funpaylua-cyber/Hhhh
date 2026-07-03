@@ -3,412 +3,386 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anna Kaniuka — фотограф · Закарпаття</title>
-<meta name="description" content="Anna Kaniuka Ph — фотограф із Тячівщини. Весільні, родинні та етнозйомки серед карпатської природи. Дубове · Тячів · Хуст.">
+<title>ANNA KANIUKA — фотограф · Закарпаття</title>
+<meta name="description" content="Anna Kaniuka Ph — фотограф із Закарпаття. Весілля, портрети, етнозйомки у вишиванках. Дубове · Тячів · Хуст.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
 <style>
-:root {
-  --white: #fcfcf8;
-  --paper: #f4f3ec;
-  --ink: #16180f;
-  --ink-soft: #3f4234;
-  --stone: #8a8a78;
-  --forest: #35513a;   /* natural accent */
-  --forest-2: #2a4030;
-  --moss: #6f7d54;
-  --line: rgba(22,24,15,0.14);
-  --line-soft: rgba(22,24,15,0.07);
-  --serif: 'Newsreader', serif;
-  --sans: 'Inter', sans-serif;
-  --ease: cubic-bezier(.19,1,.22,1);
+:root{
+  --paper:#f6f5f2;
+  --panel:#eceae5;
+  --ink:#111110;
+  --ink-2:#3a3a37;
+  --mute:#93938c;
+  --line:rgba(17,17,16,.14);
+  --line-2:rgba(17,17,16,.08);
+  --grot:'Archivo',sans-serif;
+  --serif:'Newsreader',serif;
+  --ease:cubic-bezier(.19,1,.22,1);
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; overflow-x: hidden; }
-body { background: var(--white); color: var(--ink); font-family: var(--sans); font-weight: 300; line-height: 1.55; overflow-x: hidden; -webkit-font-smoothing: antialiased; width: 100%; max-width: 100%; }
-a { color: inherit; text-decoration: none; }
-img, svg { display: block; max-width: 100%; }
-::selection { background: var(--forest); color: var(--white); }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--paper);color:var(--ink);font-family:var(--grot);font-weight:400;line-height:1.5;overflow-x:hidden;max-width:100%;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+::selection{background:var(--ink);color:var(--paper)}
+.micro{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--mute);font-weight:500}
+.serif-i{font-family:var(--serif);font-style:italic;font-weight:400}
 
-.label { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--stone); font-weight: 400; }
-.serif { font-family: var(--serif); }
-
-/* botanical decorations */
-.botanical { position: absolute; pointer-events: none; color: var(--forest); opacity: 0; max-width: 45vw; }
-.botanical.in { opacity: 0.5; transition: opacity 1.6s var(--ease) .3s; }
-.botanical path, .botanical line { stroke: currentColor; stroke-width: 1; fill: none; vector-effect: non-scaling-stroke; }
-.botanical .leaf { fill: currentColor; stroke: none; opacity: 0.16; }
-
-/* custom cursor */
-.cursor { position: fixed; top:0; left:0; width: 7px; height: 7px; border-radius: 50%; background: var(--forest); pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .35s var(--ease), height .35s var(--ease), background .35s, border-color .35s; }
-.cursor--ring { width: 42px; height: 42px; background: transparent; border: 1px solid var(--forest); }
-@media (hover: none), (max-width: 800px) { .cursor { display: none; } }
+/* cursor */
+.cursor{position:fixed;top:0;left:0;width:8px;height:8px;border-radius:50%;background:var(--ink);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .4s var(--ease),height .4s var(--ease),background .4s;mix-blend-mode:difference}
+.cursor.grow{width:64px;height:64px;background:#fff}
+@media(hover:none),(max-width:800px){.cursor{display:none}}
 
 /* nav */
-.nav { position: fixed; inset: 0 0 auto 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 24px clamp(20px,5vw,64px); transition: padding .5s var(--ease), background .5s, border-color .5s; border-bottom: 1px solid transparent; }
-.nav.is-scrolled { padding-top: 15px; padding-bottom: 15px; background: rgba(252,252,248,0.85); backdrop-filter: blur(12px); border-bottom-color: var(--line-soft); }
-.nav__logo { display: inline-flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 1.3rem; font-weight: 400; }
-.nav__logo em { font-style: italic; }
-.nav__logo svg { width: 18px; height: 18px; color: var(--forest); }
-.nav__menu { display: flex; gap: clamp(16px,2.6vw,38px); align-items: center; }
-.nav__menu a { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; position: relative; opacity: 0.75; transition: opacity .3s; }
-.nav__menu a::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 0; height: 1px; background: var(--forest); transition: width .4s var(--ease); }
-.nav__menu a:hover { opacity: 1; }
-.nav__menu a:hover::after { width: 100%; }
-.nav__book { border: 1px solid var(--forest); color: var(--forest); padding: 9px 18px; border-radius: 999px; opacity: 1 !important; }
-.nav__book::after { display: none; }
-.nav__book:hover { background: var(--forest); color: var(--white); }
-@media (max-width: 760px) { .nav__menu a:not(.nav__book) { display: none; } }
+.nav{position:fixed;inset:0 0 auto 0;z-index:80;display:flex;justify-content:space-between;align-items:center;padding:22px clamp(18px,4vw,54px);mix-blend-mode:difference;color:#fff}
+.brand{font-family:var(--serif);font-style:italic;font-size:1.5rem;line-height:1;letter-spacing:.01em}
+.brand small{display:block;font-family:var(--grot);font-style:normal;font-size:.52rem;letter-spacing:.42em;text-transform:uppercase;margin-top:3px;opacity:.8}
+.burger{display:flex;flex-direction:column;gap:6px;background:none;border:0;cursor:pointer;padding:6px}
+.burger span{width:30px;height:2px;background:#fff;display:block;transition:transform .5s var(--ease),opacity .3s}
+
+/* overlay menu */
+.menu{position:fixed;inset:0;z-index:90;background:var(--ink);color:var(--paper);padding:clamp(80px,12vh,130px) clamp(20px,6vw,90px) 40px;display:flex;flex-direction:column;justify-content:space-between;clip-path:inset(0 0 100% 0);transition:clip-path .8s var(--ease);pointer-events:none}
+.menu.open{clip-path:inset(0 0 0 0);pointer-events:auto}
+.menu__close{position:absolute;top:26px;right:clamp(18px,4vw,54px);background:none;border:0;color:var(--paper);cursor:pointer;padding:6px}
+.menu__close svg{width:26px;height:26px}
+.menu__list{list-style:none;display:flex;flex-direction:column;gap:clamp(2px,1vh,10px)}
+.menu__list li{overflow:hidden}
+.menu__list a{display:inline-block;font-family:var(--grot);font-weight:300;font-size:clamp(2rem,7vw,4.6rem);line-height:1.12;letter-spacing:-.01em;transform:translateY(110%);transition:transform .7s var(--ease),color .3s}
+.menu.open .menu__list a{transform:translateY(0)}
+.menu__list a:hover{font-weight:600;font-style:italic;font-family:var(--serif)}
+.menu__list li:nth-child(1) a{transition-delay:.06s}
+.menu__list li:nth-child(2) a{transition-delay:.11s}
+.menu__list li:nth-child(3) a{transition-delay:.16s}
+.menu__list li:nth-child(4) a{transition-delay:.21s}
+.menu__list li:nth-child(5) a{transition-delay:.26s}
+.menu__list li:nth-child(6) a{transition-delay:.31s}
+.menu__list li:nth-child(7) a{transition-delay:.36s}
+.menu__foot{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;border-top:1px solid rgba(246,245,242,.2);padding-top:24px}
+.menu__foot .micro{color:rgba(246,245,242,.55)}
+.menu__soc{display:flex;gap:16px}
+.menu__soc a{width:42px;height:42px;border:1px solid rgba(246,245,242,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .3s,color .3s}
+.menu__soc a:hover{background:var(--paper);color:var(--ink)}
+.menu__soc svg{width:18px;height:18px}
 
 /* hero */
-.hero { position: relative; padding: clamp(140px,20vh,210px) clamp(20px,5vw,64px) clamp(50px,7vw,90px); overflow: hidden; }
-.hero__top { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--line); padding-bottom: 18px; margin-bottom: clamp(32px,5vw,58px); flex-wrap: wrap; gap: 10px; }
-.hero__title { position: relative; z-index: 2; font-family: var(--serif); font-weight: 300; font-size: clamp(3rem,11.5vw,10.5rem); line-height: 0.94; letter-spacing: -0.02em; }
-.hero__title em { font-style: italic; color: var(--forest); }
-.hero__grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr auto; gap: clamp(28px,6vw,80px); align-items: end; margin-top: clamp(30px,4vw,48px); }
-.hero__lede { max-width: 42ch; font-size: clamp(1.05rem,1.55vw,1.32rem); line-height: 1.72; color: var(--ink-soft); }
-.hero__meta { text-align: right; display: flex; flex-direction: column; gap: 8px; }
-.hero__meta strong { font-family: var(--serif); font-weight: 400; font-size: 1.05rem; }
-@media (max-width: 720px) { .hero__grid { grid-template-columns: 1fr; align-items: start; } .hero__meta { text-align: left; } }
-.hero__botan { top: clamp(90px,14vh,170px); right: 0; width: clamp(200px,26vw,420px); z-index: 1; }
-@media (max-width: 700px) { .hero__botan { top: auto; bottom: 8px; width: 130px; opacity: .35; } .hero__botan.in { opacity: .32; } }
-.scroll-hint { position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 10px; margin-top: clamp(40px,6vw,66px); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); }
-.scroll-hint span { width: 44px; height: 1px; background: var(--stone); position: relative; overflow: hidden; }
-.scroll-hint span::after { content: ''; position: absolute; inset: 0; background: var(--forest); animation: slide 2.4s var(--ease) infinite; }
-@keyframes slide { 0% { transform: translateX(-100%); } 60%,100% { transform: translateX(100%); } }
+.hero{min-height:100vh;padding:clamp(120px,17vh,180px) clamp(18px,5vw,64px) clamp(40px,6vw,70px);display:flex;flex-direction:column;justify-content:space-between;position:relative}
+.hero__meta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.hero__statement{font-weight:800;text-transform:uppercase;font-size:clamp(2.7rem,11.4vw,10.5rem);line-height:.9;letter-spacing:-.03em;max-width:15ch}
+.hero__statement .em{font-weight:400;text-transform:none;font-family:var(--serif);font-style:italic;letter-spacing:-.01em}
+.hero__row{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
+.hero__sub{max-width:34ch;font-size:1.02rem;line-height:1.7;color:var(--ink-2)}
+.reveal-line{display:block;overflow:hidden}
+.reveal-line>span{display:block;transform:translateY(110%);transition:transform 1s var(--ease)}
+.hero.in .reveal-line>span{transform:translateY(0)}
+.hero.in .reveal-line:nth-child(2)>span{transition-delay:.08s}
+.hero.in .reveal-line:nth-child(3)>span{transition-delay:.16s}
 
-/* botanical divider */
-.divider { display: flex; align-items: center; justify-content: center; gap: 22px; padding: clamp(30px,5vw,54px) clamp(20px,5vw,64px); }
-.divider .rule { flex: 1; max-width: 220px; height: 1px; background: var(--line); }
-.divider svg { width: 60px; height: 22px; color: var(--forest); opacity: 0.75; }
+/* pill */
+.pill{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--paper);padding:15px 30px;border-radius:999px;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;position:relative;overflow:hidden;transition:color .5s var(--ease)}
+.pill span{position:relative;z-index:1}
+.pill::before{content:'';position:absolute;inset:0;background:var(--paper);border-radius:999px;transform:scale(0);transition:transform .55s var(--ease);z-index:0}
+.pill:hover{color:var(--ink)}
+.pill:hover::before{transform:scale(1.05)}
+.pill--ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.pill--ghost::before{background:var(--ink)}
+.pill--ghost:hover{color:var(--paper)}
+.pill svg{width:15px;height:15px;position:relative;z-index:1;transition:transform .4s var(--ease)}
+.pill:hover svg{transform:translateX(4px)}
 
-section { position: relative; padding: clamp(70px,9vw,130px) clamp(20px,5vw,64px); max-width: 1440px; margin: 0 auto; }
-.head { display: grid; grid-template-columns: auto 1fr; gap: clamp(18px,4vw,58px); align-items: baseline; margin-bottom: clamp(42px,6vw,74px); }
-.head__num { font-family: var(--serif); font-style: italic; font-size: clamp(1.1rem,2vw,1.5rem); color: var(--forest); }
-.head__title { font-family: var(--serif); font-weight: 300; font-size: clamp(2.1rem,5.5vw,4rem); line-height: 1; letter-spacing: -0.01em; }
-.head__title em { font-style: italic; color: var(--forest); }
+/* marquee */
+.marq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:18px 0;white-space:nowrap}
+.marq__t{display:inline-flex;animation:marq 30s linear infinite}
+.marq__t>*{display:inline-flex;align-items:center}
+.marq__t b{font-weight:800;text-transform:uppercase;font-size:1.6rem;letter-spacing:-.01em;padding:0 26px}
+.marq__t i{font-family:var(--serif);font-style:italic;font-size:1.6rem;padding:0 26px;color:var(--mute)}
+@keyframes marq{to{transform:translateX(-50%)}}
 
-.reveal { opacity: 0; transform: translateY(30px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
-.reveal.in { opacity: 1; transform: none; }
-.reveal[data-d="1"] { transition-delay: .08s; }
-.reveal[data-d="2"] { transition-delay: .16s; }
-.reveal[data-d="3"] { transition-delay: .24s; }
+/* big statement panel */
+.panel{background:var(--panel);padding:clamp(70px,13vw,180px) clamp(18px,5vw,64px)}
+.panel h2{font-weight:800;text-transform:uppercase;font-size:clamp(2rem,7.5vw,6.4rem);line-height:.98;letter-spacing:-.03em;max-width:16ch}
+.panel h2 .em{font-weight:400;text-transform:none;font-family:var(--serif);font-style:italic}
+.panel .micro{margin-bottom:26px;display:block}
 
-/* manifesto */
-.manifesto { max-width: 1080px; position: relative; }
-.manifesto p { font-family: var(--serif); font-weight: 300; font-size: clamp(1.6rem,3.6vw,2.85rem); line-height: 1.34; letter-spacing: -0.005em; }
-.manifesto em { font-style: italic; color: var(--forest); }
-.manifesto .sig { margin-top: 36px; font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); }
-.manifesto__botan { right: 0; bottom: -40px; width: 180px; }
+/* editorial gallery — broken grid */
+.gallery{padding:clamp(60px,9vw,120px) clamp(18px,5vw,64px)}
+.gg{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(16px,2.5vw,40px)}
+.shot{position:relative;min-width:0}
+.shot__frame{position:relative;overflow:hidden;background:var(--panel)}
+.shot__img{width:100%;height:100%;transform:scale(1.03);filter:grayscale(1) contrast(1.03);transition:transform 1.4s var(--ease),filter .8s}
+.shot:hover .shot__img{transform:scale(1.09);filter:grayscale(.15) contrast(1.05)}
+.shot__frame::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.07;mix-blend-mode:overlay;pointer-events:none}
+.shot__cap{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;gap:12px}
+.shot__cap h3{font-weight:500;font-size:1rem;letter-spacing:.01em;min-width:0}
+.shot__cap .n{font-family:var(--serif);font-style:italic;color:var(--mute);font-size:1rem;flex-shrink:0}
+.a1{aspect-ratio:3/4}.a2{aspect-ratio:4/5}.a3{aspect-ratio:1/1}.a4{aspect-ratio:4/3}
+.g1{background:linear-gradient(150deg,#d8d6d0,#3d3c39)}
+.g2{background:linear-gradient(150deg,#cececa,#565550)}
+.g3{background:linear-gradient(150deg,#e0ded9,#6f6e69)}
+.g4{background:linear-gradient(150deg,#c6c4bf,#2c2b28)}
+.g5{background:linear-gradient(150deg,#d2d0cb,#4a4945)}
+/* broken placement */
+.s1{grid-column:1/6}
+.s2{grid-column:7/13;margin-top:clamp(50px,10vw,150px)}
+.s3{grid-column:2/7;margin-top:clamp(30px,5vw,70px)}
+.s4{grid-column:8/13;margin-top:clamp(-40px,-3vw,-10px)}
+.s5{grid-column:1/8;margin-top:clamp(40px,7vw,90px)}
 
-/* works */
-.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: clamp(30px,4vw,46px); }
-.filters button { font-family: var(--sans); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: none; transition: background .35s var(--ease), color .35s, border-color .35s; }
-.filters button.is-active, .filters button:hover { background: var(--forest); color: var(--white); border-color: var(--forest); }
-
-.works { display: grid; grid-template-columns: repeat(12,minmax(0,1fr)); gap: clamp(16px,2vw,30px); }
-.work { grid-column: span 6; min-width: 0; }
-.work__frame { min-width: 0; }
-.work--tall { grid-column: span 6; grid-row: span 2; }
-.work--wide { grid-column: span 8; }
-.work--narrow { grid-column: span 4; }
-.work:nth-child(2) { margin-top: clamp(36px,6vw,84px); }
-.work__frame { position: relative; overflow: hidden; border-radius: 3px; }
-.work__img { aspect-ratio: 3/4; transform: scale(1.02); transition: transform 1.3s var(--ease), filter .8s; filter: saturate(0.9); }
-.work--wide .work__img { aspect-ratio: 4/3; }
-.work--tall .work__img { aspect-ratio: 3/4.6; }
-.work__frame:hover .work__img { transform: scale(1.06); filter: saturate(1.05); }
-.work__cap { display: flex; justify-content: space-between; align-items: baseline; padding-top: 13px; border-top: 1px solid var(--line); margin-top: 13px; gap: 12px; }
-.work__cap h3 { font-family: var(--serif); font-weight: 400; font-size: 1.12rem; min-width: 0; }
-.work__cap .meta { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); white-space: nowrap; flex-shrink: 0; }
-.work.is-hidden { display: none; }
-
-/* natural nature-toned placeholders */
-.t1 { background: linear-gradient(155deg,#7c8f63,#33472f); }
-.t2 { background: linear-gradient(150deg,#a7ac92,#5c6748); }
-.t3 { background: linear-gradient(155deg,#8ba088,#3d5343); }
-.t4 { background: linear-gradient(150deg,#c2bda3,#7a7355); }
-.t5 { background: linear-gradient(150deg,#9fb08d,#4f6140); }
-.t6 { background: linear-gradient(155deg,#5a6d4c,#293620); }
-.t7 { background: linear-gradient(150deg,#b3bfa0,#6b7a52); }
-
-@media (max-width: 820px) {
-  .works { grid-template-columns: repeat(2,minmax(0,1fr)); }
-  .work, .work--tall, .work--wide, .work--narrow { grid-column: span 1 !important; grid-row: auto !important; }
-  .work:nth-child(2) { margin-top: 0; }
-}
-@media (max-width: 460px) {
-  .works { grid-template-columns: minmax(0,1fr); }
+/* category feature block */
+.feat{padding:clamp(70px,10vw,140px) clamp(18px,5vw,64px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(20px,3vw,50px);align-items:center}
+.feat__media{grid-column:span 7;position:relative;min-width:0}
+.feat:nth-of-type(even) .feat__media{grid-column:6/13;order:2}
+.feat__body{grid-column:span 5;min-width:0}
+.feat:nth-of-type(even) .feat__body{grid-column:1/5;order:1}
+.feat__title{font-weight:300;text-transform:uppercase;font-size:clamp(2.2rem,6vw,5.2rem);line-height:.98;letter-spacing:.02em}
+.feat__title .em{font-family:var(--serif);font-style:italic;font-weight:400;text-transform:none;letter-spacing:-.01em}
+.feat__meta{margin:18px 0 30px;color:var(--mute);font-family:var(--serif);font-style:italic;font-size:1.15rem}
+.feat__frame{position:relative;overflow:hidden;background:var(--panel);aspect-ratio:4/5}
+.feat__frame::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.07;mix-blend-mode:overlay;pointer-events:none}
+.feat:hover .shot__img{filter:grayscale(.1)}
+@media(max-width:820px){
+  .feat{display:block}
+  .feat:nth-of-type(even) .feat__media{order:0}
+  .feat__body{margin-top:26px}
 }
 
 /* stats */
-.stats { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid var(--line); max-width: 1440px; margin: 0 auto; }
-.stats > div { padding: clamp(28px,4vw,48px) clamp(14px,2vw,30px); border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); }
-.stats > div:nth-child(4n) { border-right: none; }
-.stats .n { font-family: var(--serif); font-weight: 300; font-size: clamp(2.3rem,5vw,3.5rem); line-height: 1; letter-spacing: -0.02em; }
-.stats .n em { font-style: italic; color: var(--forest); }
-.stats .k { margin-top: 8px; font-size: 0.72rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--stone); }
-@media (max-width: 700px) { .stats { grid-template-columns: repeat(2,1fr); } .stats > div:nth-child(2n) { border-right: none; } }
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats>div{padding:clamp(30px,4vw,54px) clamp(14px,2vw,30px);border-right:1px solid var(--line)}
+.stats>div:last-child{border-right:0}
+.stats .n{font-weight:800;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1;letter-spacing:-.03em}
+.stats .k{margin-top:8px}
+@media(max-width:640px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stats>div:nth-child(2n){border-right:0}.stats>div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
 
 /* about */
-.about { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(34px,6vw,90px); align-items: center; }
-.about__portrait { position: relative; overflow: hidden; border-radius: 3px; }
-.about__portrait .work__img { aspect-ratio: 4/5; background: linear-gradient(160deg,#93a481,#3f5540); transform: scale(1.02); }
-.about__portrait span { position: absolute; left: 16px; bottom: 14px; z-index: 1; color: #fff; }
-.about__lede { font-family: var(--serif); font-weight: 300; font-size: clamp(1.5rem,2.6vw,2.1rem); line-height: 1.4; letter-spacing: -0.01em; margin-bottom: 24px; }
-.about__lede em { font-style: italic; color: var(--forest); }
-.about__body { color: var(--ink-soft); font-size: 1.02rem; line-height: 1.85; max-width: 46ch; }
-.about__body p + p { margin-top: 15px; }
-@media (max-width: 820px) { .about { grid-template-columns: 1fr; } .about__portrait { max-width: 380px; } }
+.about{padding:clamp(70px,10vw,140px) clamp(18px,5vw,64px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(24px,4vw,70px);align-items:end}
+.about__lead{grid-column:1/8;font-weight:300;font-size:clamp(1.5rem,3.4vw,2.7rem);line-height:1.32;letter-spacing:-.01em}
+.about__lead .em{font-family:var(--serif);font-style:italic}
+.about__side{grid-column:9/13;color:var(--ink-2);font-size:.98rem;line-height:1.8}
+.about__side p+p{margin-top:14px}
+@media(max-width:820px){.about__lead,.about__side{grid-column:1/13}.about__side{margin-top:20px}}
 
 /* services */
-.svc { border-top: 1px solid var(--ink); }
-.svc__row { display: grid; grid-template-columns: auto 1fr auto; gap: clamp(16px,3vw,40px); align-items: center; padding: clamp(26px,3.4vw,42px) clamp(16px,2vw,28px); border-bottom: 1px solid var(--line); position: relative; z-index: 0; transition: color .4s var(--ease); }
-.svc__row::before { content: ''; position: absolute; inset: 0; background: var(--forest); z-index: -1; transform: scaleX(0); transform-origin: left; transition: transform .6s var(--ease); }
-.svc__row:hover { color: var(--white); }
-.svc__row:hover::before { transform: scaleX(1); }
-.svc__row:hover .svc__num { color: #b7c9a3; }
-.svc__row:hover .svc__desc { color: rgba(252,252,248,0.72); }
-.svc__num { font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--forest); transition: color .4s; }
-.svc__name { font-family: var(--serif); font-weight: 300; font-size: clamp(1.5rem,3.4vw,2.4rem); letter-spacing: -0.01em; }
-.svc__desc { font-size: 0.92rem; color: var(--stone); max-width: 34ch; text-align: right; transition: color .4s; }
-@media (max-width: 720px) { .svc__row { grid-template-columns: auto 1fr; } .svc__desc { display: none; } }
-
-/* quote */
-.quote { text-align: center; max-width: 1200px; position: relative; }
-.quote blockquote { font-family: var(--serif); font-weight: 300; font-style: italic; font-size: clamp(1.9rem,5vw,3.6rem); line-height: 1.32; letter-spacing: -0.01em; }
-.quote blockquote span { font-style: normal; color: var(--forest); }
-.quote cite { display: block; margin-top: 28px; font-style: normal; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); }
-.quote__botan { left: 50%; transform: translateX(-50%); top: -20px; width: 90px; }
+.svc{padding:clamp(60px,9vw,120px) clamp(18px,5vw,64px)}
+.svc__list{border-top:1px solid var(--ink)}
+.row{display:grid;grid-template-columns:auto 1fr auto;gap:clamp(14px,3vw,40px);align-items:center;padding:clamp(24px,3.2vw,40px) clamp(10px,2vw,26px);border-bottom:1px solid var(--line);position:relative;z-index:0;transition:color .45s var(--ease)}
+.row::before{content:'';position:absolute;inset:0;background:var(--ink);z-index:-1;transform:scaleX(0);transform-origin:left;transition:transform .55s var(--ease)}
+.row:hover{color:var(--paper)}
+.row:hover::before{transform:scaleX(1)}
+.row:hover .row__n{color:rgba(246,245,242,.6)}
+.row__n{font-family:var(--serif);font-style:italic;color:var(--mute);font-size:1rem;transition:color .4s}
+.row__t{font-weight:400;text-transform:uppercase;font-size:clamp(1.4rem,3.4vw,2.4rem);letter-spacing:-.01em}
+.row__d{color:var(--mute);font-size:.9rem;text-align:right;max-width:32ch;transition:color .4s}
+.row:hover .row__d{color:rgba(246,245,242,.7)}
+@media(max-width:720px){.row{grid-template-columns:auto 1fr}.row__d{display:none}}
 
 /* contact */
-.contact { max-width: none; padding: 0; }
-.contact__inner { background: var(--forest-2); color: var(--white); padding: clamp(70px,11vw,150px) clamp(20px,6vw,80px); position: relative; overflow: hidden; }
-.contact__inner .label { color: rgba(252,252,248,0.55); }
-.contact__title { font-family: var(--serif); font-weight: 300; font-size: clamp(2.6rem,8vw,6.2rem); line-height: 0.98; letter-spacing: -0.02em; margin: 20px 0 38px; }
-.contact__title em { font-style: italic; }
-.contact__link { display: inline-flex; align-items: center; gap: 16px; font-family: var(--serif); font-size: clamp(1.4rem,3vw,2.2rem); font-weight: 300; border-bottom: 1px solid rgba(252,252,248,0.32); padding-bottom: 8px; transition: gap .4s var(--ease), border-color .4s; }
-.contact__link:hover { gap: 26px; border-color: var(--white); }
-.contact__link svg { width: 30px; height: 30px; }
-.contact__foot { margin-top: clamp(56px,9vw,104px); display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px; border-top: 1px solid rgba(252,252,248,0.18); padding-top: 28px; }
-.contact__foot .col { display: flex; flex-direction: column; gap: 7px; }
-.contact__foot a { font-size: 0.86rem; opacity: 0.78; transition: opacity .3s; }
-.contact__foot a:hover { opacity: 1; }
-.contact__foot .big { font-family: var(--serif); font-size: 1.35rem; opacity: 1; }
-.contact__botan { right: 0; bottom: -30px; width: clamp(160px,22vw,320px); color: #7c9268; }
-.contact__botan.in { opacity: 0.35; }
+.contact{background:var(--ink);color:var(--paper);padding:clamp(80px,13vw,190px) clamp(18px,5vw,64px)}
+.contact .micro{color:rgba(246,245,242,.5)}
+.contact h2{font-weight:800;text-transform:uppercase;font-size:clamp(2.6rem,11vw,9rem);line-height:.9;letter-spacing:-.03em;margin:20px 0 44px}
+.contact h2 .em{font-weight:400;text-transform:none;font-family:var(--serif);font-style:italic}
+.contact__row{display:flex;flex-wrap:wrap;gap:30px;align-items:center;justify-content:space-between}
+.contact .pill{background:var(--paper);color:var(--ink)}
+.contact .pill::before{background:var(--ink)}
+.contact .pill:hover{color:var(--paper)}
+.contact__soc{display:flex;gap:14px}
+.contact__soc a{width:52px;height:52px;border:1px solid rgba(246,245,242,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .3s,color .3s,transform .4s var(--ease)}
+.contact__soc a:hover{background:var(--paper);color:var(--ink);transform:translateY(-3px)}
+.contact__soc svg{width:20px;height:20px}
+.contact__foot{margin-top:clamp(60px,10vw,120px);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid rgba(246,245,242,.18);padding-top:26px}
+.contact__foot .micro{color:rgba(246,245,242,.45)}
 
-footer { text-align: center; padding: 32px 24px; font-size: 0.76rem; letter-spacing: 0.07em; color: rgba(252,252,248,0.6); background: var(--forest-2); }
+/* reveal */
+.up{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.up.in{opacity:1;transform:none}
+.up[data-d="1"]{transition-delay:.1s}.up[data-d="2"]{transition-delay:.2s}.up[data-d="3"]{transition-delay:.3s}
 </style>
 </head>
 <body>
 
 <div class="cursor" id="cursor"></div>
 
-<header class="nav" id="nav">
-  <a href="#" class="nav__logo">
-    <svg viewBox="0 0 24 24" fill="none"><path d="M12 22c0-6 0-9 5-14-6 1-9 4-9 9M12 22C12 14 9 9 3 8c1 5 4 8 9 9" stroke="currentColor" stroke-width="1.2"/></svg>
-    Anna <em>Kaniuka</em>
-  </a>
-  <nav class="nav__menu">
-    <a href="#works">Роботи</a>
-    <a href="#about">Про мене</a>
-    <a href="#services">Послуги</a>
-    <a href="https://instagram.com/anna_kaniuka.ph" target="_blank" rel="noopener">Instagram</a>
-    <a href="#contact" class="nav__book">Записатись</a>
-  </nav>
+<header class="nav">
+  <a href="#top" class="brand">Anna Kaniuka<small>photography</small></a>
+  <button class="burger" id="burger" aria-label="Меню"><span></span><span></span></button>
 </header>
 
-<section class="hero">
-  <svg class="botanical hero__botan" viewBox="0 0 200 340" fill="none" aria-hidden="true">
-    <path d="M100 340C100 250 100 150 100 30"/>
-    <g stroke-width="1">
-      <path class="leaf" d="M100 60c26-6 44 8 50 30-26 6-44-8-50-30Z"/>
-      <path d="M100 60c26-6 44 8 50 30"/>
-      <path class="leaf" d="M100 100c-26-8-46 4-54 26 26 8 46-4 54-26Z"/>
-      <path d="M100 100c-26-8-46 4-54 26"/>
-      <path class="leaf" d="M100 145c28-4 46 12 50 34-28 4-46-12-50-34Z"/>
-      <path d="M100 145c28-4 46 12 50 34"/>
-      <path class="leaf" d="M100 190c-24-6-44 6-52 28 24 6 44-6 52-28Z"/>
-      <path d="M100 190c-24-6-44 6-52 28"/>
-      <path class="leaf" d="M100 235c26-4 42 10 47 30-26 4-42-10-47-30Z"/>
-      <path d="M100 235c26-4 42 10 47 30"/>
-    </g>
-  </svg>
-  <div class="hero__top">
-    <span class="label">Фотограф · Тячівщина, Закарпаття</span>
-    <span class="label">Природа · Люди · Світло</span>
-  </div>
-  <h1 class="hero__title reveal">Краса,<br>народжена <em>природою</em></h1>
-  <div class="hero__grid">
-    <p class="hero__lede reveal" data-d="1">Знімаю весілля, родини та етнообрази у вишиванках серед карпатських гір, лісів і полів — там, де живе справжнє.</p>
-    <div class="hero__meta reveal" data-d="2">
-      <span class="label">Локації</span>
-      <strong class="serif">Дубове · Тячів · Хуст</strong>
+<nav class="menu" id="menu" aria-hidden="true">
+  <button class="menu__close" id="menuClose" aria-label="Закрити"><svg viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.4"/></svg></button>
+  <ul class="menu__list">
+    <li><a href="#work" data-link>роботи</a></li>
+    <li><a href="#weddings" data-link>весілля</a></li>
+    <li><a href="#ethno" data-link>етно у вишиванках</a></li>
+    <li><a href="#family" data-link>родинні зйомки</a></li>
+    <li><a href="#about" data-link>про мене</a></li>
+    <li><a href="#services" data-link>послуги</a></li>
+    <li><a href="#contact" data-link>контакти</a></li>
+  </ul>
+  <div class="menu__foot">
+    <span class="micro">Дубове · Тячів · Хуст</span>
+    <div class="menu__soc">
+      <a href="https://instagram.com/anna_kaniuka.ph" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a>
+      <a href="https://instagram.com/anna_kaniuka.ph" target="_blank" rel="noopener" aria-label="Написати"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H8l-4 4V5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></a>
     </div>
   </div>
-  <div class="scroll-hint reveal" data-d="3">Гортайте <span></span></div>
+</nav>
+
+<main id="top">
+
+<section class="hero" id="hero">
+  <div class="hero__meta">
+    <span class="micro">Фотограф · Закарпаття</span>
+    <span class="micro">Портфоліо 2018—2026</span>
+  </div>
+  <h1 class="hero__statement">
+    <span class="reveal-line"><span>ЯКА ТИ,</span></span>
+    <span class="reveal-line"><span>КОЛИ НІХТО</span></span>
+    <span class="reveal-line"><span>НЕ <span class="em">дивиться?</span></span></span>
+  </h1>
+  <div class="hero__row">
+    <p class="hero__sub">Знімаю не обличчя — а почуття. Весілля, портрети та етнообрази у вишиванках серед карпатської природи.</p>
+    <a href="#work" class="pill"><span>Дивитись роботи</span><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6"/></svg></a>
+  </div>
 </section>
 
-<div class="divider">
-  <div class="rule"></div>
-  <svg viewBox="0 0 120 40" fill="none" aria-hidden="true"><path d="M10 20h100" stroke="currentColor" stroke-width="1"/><path d="M60 20c-6-9-16-11-26-9 4 9 14 13 26 9Zm0 0c6-9 16-11 26-9-4 9-14 13-26 9Z" fill="currentColor" opacity=".18"/><path d="M60 20c-6-9-16-11-26-9M60 20c6-9 16-11 26-9" stroke="currentColor" stroke-width="1"/></svg>
-  <div class="rule"></div>
+<div class="marq" aria-hidden="true">
+  <div class="marq__t">
+    <b>Весілля</b><i>portraits</i><b>Етно</b><i>family</i><b>Природа</b><i>love story</i>
+    <b>Весілля</b><i>portraits</i><b>Етно</b><i>family</i><b>Природа</b><i>love story</i>
+  </div>
 </div>
 
-<section id="intro">
-  <div class="manifesto reveal">
-    <p>Для мене фотографія — не постановка, а спосіб <em>зберегти справжнє</em>: тепло родини, ніжність весільного дня та гармонію людини з природою.</p>
-    <p class="sig">— Anna Kaniuka Ph</p>
-    <svg class="botanical manifesto__botan" viewBox="0 0 180 120" fill="none" aria-hidden="true"><path d="M4 116C60 100 120 70 176 8"/><path class="leaf" d="M120 55c14-14 34-14 50-6-14 14-34 14-50 6Z"/><path d="M120 55c14-14 34-14 50-6"/><path class="leaf" d="M92 72c8-18 26-24 44-22-8 18-26 24-44 22Z"/><path d="M92 72c8-18 26-24 44-22"/></svg>
-  </div>
+<section class="panel">
+  <span class="micro up">Маніфест</span>
+  <h2 class="up" data-d="1">Справжнє <span class="em">не позує</span> — воно просто трапляється, а я лишаюсь поруч, щоб його впіймати.</h2>
 </section>
 
-<section id="works">
-  <div class="head">
-    <span class="head__num">01</span>
-    <h2 class="head__title">Обрані <em>роботи</em></h2>
-  </div>
-  <div class="filters reveal">
-    <button class="is-active" data-filter="all">Усі</button>
-    <button data-filter="ethno">Етно</button>
-    <button data-filter="wedding">Весілля</button>
-    <button data-filter="family">Родина</button>
-    <button data-filter="kids">Хрестини</button>
-    <button data-filter="nature">Карпати</button>
-  </div>
-  <div class="works">
-    <figure class="work work--tall reveal" data-cat="ethno">
-      <div class="work__frame"><div class="work__img t1"></div></div>
-      <figcaption class="work__cap"><h3>Вінок і вишиванка</h3><span class="meta">Етно · 2026</span></figcaption>
+<section class="gallery" id="work">
+  <div class="gg">
+    <figure class="shot s1 up" data-cat="ethno">
+      <div class="shot__frame a1"><div class="shot__img g1"></div></div>
+      <figcaption class="shot__cap"><h3>Вінок і вишиванка</h3><span class="n">01</span></figcaption>
     </figure>
-    <figure class="work reveal" data-cat="family" data-d="1">
-      <div class="work__frame"><div class="work__img t2"></div></div>
-      <figcaption class="work__cap"><h3>Родинне тепло</h3><span class="meta">Родина</span></figcaption>
+    <figure class="shot s2 up" data-d="1" data-cat="wedding">
+      <div class="shot__frame a2"><div class="shot__img g2"></div></div>
+      <figcaption class="shot__cap"><h3>Весільний день</h3><span class="n">02</span></figcaption>
     </figure>
-    <figure class="work reveal" data-cat="nature">
-      <div class="work__frame"><div class="work__img t3"></div></div>
-      <figcaption class="work__cap"><h3>Гори Тячівщини</h3><span class="meta">Карпати</span></figcaption>
+    <figure class="shot s3 up" data-cat="nature">
+      <div class="shot__frame a3"><div class="shot__img g3"></div></div>
+      <figcaption class="shot__cap"><h3>Гори Тячівщини</h3><span class="n">03</span></figcaption>
     </figure>
-    <figure class="work work--wide reveal" data-cat="wedding" data-d="1">
-      <div class="work__frame"><div class="work__img t4"></div></div>
-      <figcaption class="work__cap"><h3>Весільний день</h3><span class="meta">Весілля · 2026</span></figcaption>
+    <figure class="shot s4 up" data-d="1" data-cat="family">
+      <div class="shot__frame a1"><div class="shot__img g4"></div></div>
+      <figcaption class="shot__cap"><h3>Родинне тепло</h3><span class="n">04</span></figcaption>
     </figure>
-    <figure class="work work--narrow reveal" data-cat="kids">
-      <div class="work__frame"><div class="work__img t5"></div></div>
-      <figcaption class="work__cap"><h3>Хрестини</h3><span class="meta">Свято</span></figcaption>
-    </figure>
-    <figure class="work reveal" data-cat="ethno">
-      <div class="work__frame"><div class="work__img t6"></div></div>
-      <figcaption class="work__cap"><h3>Етнопортрет</h3><span class="meta">Етно</span></figcaption>
-    </figure>
-    <figure class="work reveal" data-cat="wedding" data-d="1">
-      <div class="work__frame"><div class="work__img t7"></div></div>
-      <figcaption class="work__cap"><h3>Наречена</h3><span class="meta">Весілля</span></figcaption>
+    <figure class="shot s5 up" data-cat="ethno">
+      <div class="shot__frame a4"><div class="shot__img g5"></div></div>
+      <figcaption class="shot__cap"><h3>Етнопортрет</h3><span class="n">05</span></figcaption>
     </figure>
   </div>
 </section>
 
-<div class="stats reveal">
-  <div><div class="n">190<em>+</em></div><div class="k">фотозйомок</div></div>
-  <div><div class="n">1500<em>+</em></div><div class="k">в Instagram</div></div>
-  <div><div class="n">03</div><div class="k">міста роботи</div></div>
-  <div><div class="n">10</div><div class="k">років у кадрі</div></div>
+<section class="feat" id="weddings">
+  <div class="feat__media up">
+    <div class="feat__frame shot"><div class="shot__img g2"></div></div>
+  </div>
+  <div class="feat__body">
+    <h2 class="feat__title up">ВЕСІЛ<span class="em">ля</span></h2>
+    <p class="feat__meta up" data-d="1">портфоліо 2018—2026</p>
+    <a href="#contact" class="pill pill--ghost up" data-d="2"><span>Дивитись</span><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6"/></svg></a>
+  </div>
+</section>
+
+<section class="feat" id="ethno">
+  <div class="feat__media up">
+    <div class="feat__frame shot"><div class="shot__img g1"></div></div>
+  </div>
+  <div class="feat__body">
+    <h2 class="feat__title up">ЕТ<span class="em">но</span></h2>
+    <p class="feat__meta up" data-d="1">вишиванки · карпатська автентика</p>
+    <a href="#contact" class="pill pill--ghost up" data-d="2"><span>Дивитись</span><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6"/></svg></a>
+  </div>
+</section>
+
+<section class="feat" id="family">
+  <div class="feat__media up">
+    <div class="feat__frame shot"><div class="shot__img g4"></div></div>
+  </div>
+  <div class="feat__body">
+    <h2 class="feat__title up">РОДИ<span class="em">на</span></h2>
+    <p class="feat__meta up" data-d="1">теплі кадри вдома та на природі</p>
+    <a href="#contact" class="pill pill--ghost up" data-d="2"><span>Дивитись</span><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6"/></svg></a>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="up"><div class="n">190+</div><div class="k micro">зйомок</div></div>
+  <div class="up" data-d="1"><div class="n">1500+</div><div class="k micro">в Instagram</div></div>
+  <div class="up" data-d="2"><div class="n">08</div><div class="k micro">років у кадрі</div></div>
+  <div class="up" data-d="3"><div class="n">03</div><div class="k micro">міста</div></div>
 </div>
 
-<section id="about">
-  <div class="about">
-    <div class="about__portrait reveal">
-      <div class="work__frame"><div class="work__img"></div></div>
-      <span class="label">Anna Kaniuka</span>
+<section class="about" id="about">
+  <p class="about__lead up">Я фотограф із Тячівщини — знімаю там, де <span class="em">виросла</span>, серед гір і лісів Закарпаття.</p>
+  <div class="about__side up" data-d="1">
+    <p>Природа навчила мене терпіння й уваги до моменту. Найбільше люблю етнозйомки у вишиванках, коли краса краєвидів зустрічається з українською автентикою.</p>
+    <p>Кожна зйомка — історія про красу, гармонію та світло, розказана вашими кадрами.</p>
+  </div>
+</section>
+
+<section class="svc" id="services">
+  <span class="micro up" style="display:block;margin-bottom:28px">Послуги</span>
+  <div class="svc__list">
+    <div class="row up"><span class="row__n">01</span><span class="row__t">Весільна зйомка</span><span class="row__d">Повний день або окрема частина свята</span></div>
+    <div class="row up"><span class="row__n">02</span><span class="row__t">Етно у вишиванках</span><span class="row__d">Автентичні образи серед краєвидів</span></div>
+    <div class="row up"><span class="row__n">03</span><span class="row__t">Родинна фотосесія</span><span class="row__d">Теплі кадри всієї родини</span></div>
+    <div class="row up"><span class="row__n">04</span><span class="row__t">Індивідуальний портрет</span><span class="row__d">Персональна зйомка для себе чи в подарунок</span></div>
+    <div class="row up"><span class="row__n">05</span><span class="row__t">Хрестини та свята</span><span class="row__d">Зворушливі моменти важливого дня</span></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <span class="micro">На зв'язку</span>
+  <h2>ЗАПИШІ<span class="em">ться</span><br>НА ЗЙОМКУ</h2>
+  <div class="contact__row">
+    <a href="https://instagram.com/anna_kaniuka.ph" target="_blank" rel="noopener" class="pill"><span>@anna_kaniuka.ph</span><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6"/></svg></a>
+    <div class="contact__soc">
+      <a href="https://instagram.com/anna_kaniuka.ph" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a>
+      <a href="https://instagram.com/anna_kaniuka.ph" target="_blank" rel="noopener" aria-label="Написати"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H8l-4 4V5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></a>
     </div>
-    <div>
-      <div class="head" style="margin-bottom:32px">
-        <span class="head__num">02</span>
-        <h2 class="head__title">Про <em>мене</em></h2>
-      </div>
-      <p class="about__lede reveal" data-d="1">Я фотограф із Тячівщини — знімаю там, де <em>виросла</em>, серед гір і лісів Закарпаття.</p>
-      <div class="about__body reveal" data-d="2">
-        <p>Природа навчила мене терпіння й уваги до моменту. Найбільше люблю етнозйомки у вишиванках, коли краса карпатських краєвидів зустрічається з українською автентикою.</p>
-        <p>Кожна зйомка — це історія про красу, гармонію та світло, розказана вашими власними кадрами.</p>
-      </div>
-    </div>
+  </div>
+  <div class="contact__foot">
+    <span class="micro">© 2026 Anna Kaniuka Ph</span>
+    <span class="micro">developed by vasil</span>
   </div>
 </section>
 
-<section id="services">
-  <div class="head">
-    <span class="head__num">03</span>
-    <h2 class="head__title">Що <em>знімаю</em></h2>
-  </div>
-  <div class="svc reveal">
-    <div class="svc__row"><span class="svc__num">01</span><span class="svc__name">Весільна зйомка</span><span class="svc__desc">Повний день або окрема частина свята</span></div>
-    <div class="svc__row"><span class="svc__num">02</span><span class="svc__name">Родинна фотосесія</span><span class="svc__desc">Теплі кадри всієї родини на природі чи вдома</span></div>
-    <div class="svc__row"><span class="svc__num">03</span><span class="svc__name">Етно у вишиванках</span><span class="svc__desc">Автентичні образи серед карпатських краєвидів</span></div>
-    <div class="svc__row"><span class="svc__num">04</span><span class="svc__name">Хрестини та свята</span><span class="svc__desc">Зворушливі моменти важливого дня</span></div>
-    <div class="svc__row"><span class="svc__num">05</span><span class="svc__name">Індивідуальний портрет</span><span class="svc__desc">Персональна зйомка для себе чи в подарунок</span></div>
-  </div>
-</section>
-
-<section class="quote">
-  <svg class="botanical quote__botan" viewBox="0 0 90 60" fill="none" aria-hidden="true"><path d="M45 60V14"/><path class="leaf" d="M45 24c9-9 22-9 32-5-9 9-22 9-32 5Z"/><path d="M45 24c9-9 22-9 32-5"/><path class="leaf" d="M45 24c-9-9-22-9-32-5 9 9 22 9 32 5Z"/><path d="M45 24c-9-9-22-9-32-5"/><circle cx="45" cy="9" r="4" fill="currentColor" opacity=".2"/></svg>
-  <blockquote class="reveal">«Передаю почуття<br>у <span>кожному кадрі</span>»</blockquote>
-  <cite class="reveal" data-d="1">Anna Kaniuka Ph</cite>
-</section>
-
-<section id="contact" class="contact">
-  <div class="contact__inner reveal">
-    <span class="label">На зв'язку</span>
-    <h2 class="contact__title">Запишіться<br>на <em>зйомку</em></h2>
-    <a class="contact__link" href="https://instagram.com/anna_kaniuka.ph" target="_blank" rel="noopener">
-      Написати в Instagram
-      <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.3"/></svg>
-    </a>
-    <div class="contact__foot">
-      <div class="col">
-        <span class="label">Instagram</span>
-        <a class="big" href="https://instagram.com/anna_kaniuka.ph" target="_blank" rel="noopener">@anna_kaniuka.ph</a>
-      </div>
-      <div class="col" style="text-align:right">
-        <span class="label">Локації зйомок</span>
-        <a>Дубове · Тячів · Хуст</a>
-      </div>
-    </div>
-    <svg class="botanical contact__botan" viewBox="0 0 200 260" fill="none" aria-hidden="true"><path d="M100 260C100 180 100 90 100 14"/><path class="leaf" d="M100 50c24-6 42 6 48 26-24 6-42-6-48-26Z"/><path d="M100 50c24-6 42 6 48 26"/><path class="leaf" d="M100 95c-24-8-44 2-52 24 24 8 44-2 52-24Z"/><path d="M100 95c-24-8-44 2-52 24"/><path class="leaf" d="M100 140c26-4 44 10 48 30-26 4-44-10-48-30Z"/><path d="M100 140c26-4 44 10 48 30"/><path class="leaf" d="M100 185c-22-6-42 4-50 26 22 6 42-4 50-26Z"/><path d="M100 185c-22-6-42 4-50 26"/></svg>
-  </div>
-</section>
-
-<footer>© MMXXVI · Anna Kaniuka Ph — Фотограф · developed by vasil</footer>
+</main>
 
 <script>
-const io = new IntersectionObserver((es) => {
-  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-}, { threshold: 0.14 });
-document.querySelectorAll('.reveal, .botanical').forEach(el => io.observe(el));
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.14});
+document.querySelectorAll('.up').forEach(el=>io.observe(el));
+requestAnimationFrame(()=>document.getElementById('hero').classList.add('in'));
 
-const nav = document.getElementById('nav');
-addEventListener('scroll', () => nav.classList.toggle('is-scrolled', scrollY > 40), { passive: true });
+const burger=document.getElementById('burger'),menu=document.getElementById('menu'),menuClose=document.getElementById('menuClose');
+const openMenu=()=>{menu.classList.add('open');menu.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'};
+const closeMenu=()=>{menu.classList.remove('open');menu.setAttribute('aria-hidden','true');document.body.style.overflow=''};
+burger.addEventListener('click',openMenu);
+menuClose.addEventListener('click',closeMenu);
+document.querySelectorAll('[data-link]').forEach(a=>a.addEventListener('click',closeMenu));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
 
-const fbtns = document.querySelectorAll('.filters button');
-const works = document.querySelectorAll('.work');
-fbtns.forEach(b => b.addEventListener('click', () => {
-  fbtns.forEach(x => x.classList.remove('is-active'));
-  b.classList.add('is-active');
-  const f = b.dataset.filter;
-  works.forEach(w => w.classList.toggle('is-hidden', !(f === 'all' || w.dataset.cat === f)));
-}));
-
-const cur = document.getElementById('cursor');
-if (matchMedia('(hover: hover)').matches && innerWidth > 800) {
-  let x = innerWidth/2, y = innerHeight/2, cx = x, cy = y;
-  addEventListener('mousemove', e => { x = e.clientX; y = e.clientY; });
-  (function loop(){ cx += (x-cx)*0.22; cy += (y-cy)*0.22; cur.style.transform = `translate(${cx}px,${cy}px) translate(-50%,-50%)`; requestAnimationFrame(loop); })();
-  document.querySelectorAll('a, button, .work__frame').forEach(el => {
-    el.addEventListener('mouseenter', () => cur.classList.add('cursor--ring'));
-    el.addEventListener('mouseleave', () => cur.classList.remove('cursor--ring'));
+const cur=document.getElementById('cursor');
+if(matchMedia('(hover:hover)').matches&&innerWidth>800){
+  let x=innerWidth/2,y=innerHeight/2,cx=x,cy=y;
+  addEventListener('mousemove',e=>{x=e.clientX;y=e.clientY});
+  (function loop(){cx+=(x-cx)*.2;cy+=(y-cy)*.2;cur.style.transform=`translate(${cx}px,${cy}px) translate(-50%,-50%)`;requestAnimationFrame(loop)})();
+  document.querySelectorAll('a,button,.shot__frame,.feat__frame').forEach(el=>{
+    el.addEventListener('mouseenter',()=>cur.classList.add('grow'));
+    el.addEventListener('mouseleave',()=>cur.classList.remove('grow'));
   });
-} else { cur.style.display = 'none'; }
+}else{cur.style.display='none'}
 </script>
 </body>
 </html>
