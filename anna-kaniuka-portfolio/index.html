@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anna Kaniuka Ph — фотограф, Закарпаття</title>
+<meta name="description" content="Портфоліо фотографа Анни Канюки. Весільні, родинні та етно-фотозйомки на Закарпатті — Дубове, Тячів, Хуст.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #2c241c;
+  --paper: #faf5ee;
+  --paper-dim: #f2e9db;
+  --line: rgba(44,36,28,0.12);
+  --accent: #b5623f;
+  --accent-soft: #f0ded2;
+  --sage: #7c8768;
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Jost', sans-serif;
+  --ease: cubic-bezier(.16,1,.3,1);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-sans); font-weight: 300; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3 { font-family: var(--font-serif); font-weight: 500; }
+img, svg { display: block; max-width: 100%; }
+
+/* nav */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px clamp(20px, 5vw, 60px);
+  background: rgba(250,245,238,0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.nav__logo { font-family: var(--font-serif); font-size: 1.4rem; letter-spacing: 0.02em; }
+.nav__logo em { font-style: italic; color: var(--accent); }
+.nav__links { display: flex; gap: clamp(16px, 3vw, 32px); align-items: center; }
+.nav__links a { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.72; transition: opacity .2s; }
+.nav__links a:hover { opacity: 1; }
+.nav__cta { padding: 9px 20px; background: var(--ink); color: var(--paper) !important; border-radius: 999px; opacity: 1 !important; }
+@media (max-width: 700px) { .nav__links a:not(.nav__cta) { display: none; } }
+
+/* hero */
+.hero {
+  padding: clamp(60px,10vw,110px) clamp(20px, 6vw, 80px) clamp(50px,8vw,90px);
+  display: grid; grid-template-columns: 1.15fr 0.85fr; gap: clamp(30px,6vw,70px); align-items: center;
+  max-width: 1200px; margin: 0 auto;
+}
+.hero__eyebrow { font-size: 0.82rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; }
+.hero__title { font-size: clamp(2.6rem, 6.5vw, 4.6rem); line-height: 1.05; margin-bottom: 24px; }
+.hero__title em { font-style: italic; color: var(--accent); }
+.hero__sub { max-width: 46ch; font-size: 1.12rem; line-height: 1.75; opacity: 0.72; margin-bottom: 34px; }
+.hero__actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero__photo { aspect-ratio: 4/5; border-radius: 18px; position: relative; overflow: hidden; background: linear-gradient(155deg,#e7cdb2,#b5623f 55%,#7c8768); }
+.hero__photo::after { content: 'фото фотографа · плейсхолдер'; position: absolute; left: 16px; bottom: 14px; font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; opacity: 0.85; }
+@media (max-width: 820px) { .hero { grid-template-columns: 1fr; } .hero__photo { order: -1; max-width: 320px; margin: 0 auto; } }
+
+.btn { display: inline-flex; align-items: center; gap: 9px; padding: 14px 30px; border-radius: 999px; font-size: 0.84rem; letter-spacing: 0.06em; text-transform: uppercase; transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s, color .25s; }
+.btn--primary { background: var(--ink); color: var(--paper); }
+.btn--primary:hover { transform: translateY(-2px); box-shadow: 0 14px 28px rgba(44,36,28,0.22); }
+.btn--ghost { border: 1px solid var(--line); }
+.btn--ghost:hover { background: var(--paper-dim); }
+
+/* marquee */
+.marquee { background: var(--accent); color: var(--paper); overflow: hidden; padding: 15px 0; white-space: nowrap; }
+.marquee__track { display: inline-flex; animation: marquee 24s linear infinite; }
+.marquee__track span { font-family: var(--font-serif); font-style: italic; font-size: 1.15rem; padding: 0 28px; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+section { padding: clamp(70px,10vw,110px) clamp(20px, 6vw, 80px); max-width: 1200px; margin: 0 auto; }
+.section-head { margin-bottom: 48px; }
+.eyebrow { font-size: 0.8rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+.title { font-size: clamp(2rem, 5vw, 2.9rem); }
+
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* about */
+.about { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(30px,6vw,80px); align-items: center; }
+.about__photo { aspect-ratio: 4/5; border-radius: 18px; background: linear-gradient(160deg,#d9c3a0,#8a6a4a); position: relative; overflow: hidden; }
+.about__photo::after { content: 'Дубове · Тячів · Хуст'; position: absolute; left: 16px; bottom: 14px; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; opacity: 0.9; }
+.about__text { font-size: 1.08rem; line-height: 1.85; opacity: 0.8; }
+.about__text p + p { margin-top: 18px; }
+@media (max-width: 820px) { .about { grid-template-columns: 1fr; } }
+
+/* stats */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 40px clamp(20px,6vw,80px); }
+.stats div { text-align: center; }
+.stats .num { font-family: var(--font-serif); font-size: clamp(2rem,4vw,2.6rem); color: var(--accent); }
+.stats span { font-size: 0.82rem; letter-spacing: 0.04em; opacity: 0.65; }
+@media (max-width: 700px) { .stats { grid-template-columns: repeat(2, 1fr); row-gap: 28px; } }
+
+/* gallery */
+.filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 34px; }
+.filters button { font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 0.04em; padding: 9px 18px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; transition: background .25s, color .25s; }
+.filters button.is-active, .filters button:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.gallery__grid { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 170px; gap: 14px; }
+.gallery__tile { border-radius: 10px; position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 16px; transition: opacity .3s, transform .3s var(--ease); }
+.gallery__tile::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(20,15,10,0.55)); }
+.gallery__tile span { position: relative; z-index: 1; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; }
+.gallery__tile:hover { transform: translateY(-3px); }
+.gallery__tile.is-hidden { display: none; }
+.gallery__tile--1 { grid-column: span 3; grid-row: span 2; background: linear-gradient(150deg,#e3ceb0,#a15a3c); }
+.gallery__tile--2 { grid-column: span 3; background: linear-gradient(150deg,#eadfc9,#c98f5e); }
+.gallery__tile--3 { grid-column: span 3; background: linear-gradient(150deg,#8b9977,#4e5c3d); }
+.gallery__tile--4 { grid-column: span 2; background: linear-gradient(150deg,#f0ded2,#b5623f); }
+.gallery__tile--5 { grid-column: span 4; background: linear-gradient(150deg,#d6c6a8,#7c8768); }
+.gallery__tile--6 { grid-column: span 2; grid-row: span 2; background: linear-gradient(150deg,#c98f5e,#5c4530); }
+.gallery__tile--7 { grid-column: span 4; background: linear-gradient(150deg,#eadfc9,#8b9977); }
+@media (max-width: 720px) {
+  .gallery__grid { grid-template-columns: repeat(2,1fr); grid-auto-rows: 150px; }
+  .gallery__tile { grid-column: span 1 !important; grid-row: span 1 !important; }
+}
+
+/* services */
+.services__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.service-card { background: var(--paper-dim); border: 1px solid var(--line); border-radius: 16px; padding: 30px 26px; transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
+.service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 36px rgba(44,36,28,0.1); }
+.service-card h3 { font-size: 1.4rem; margin-bottom: 10px; }
+.service-card p { font-size: 0.92rem; line-height: 1.65; opacity: 0.68; margin-bottom: 16px; }
+.service-card span { font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+@media (max-width: 820px) { .services__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .services__grid { grid-template-columns: 1fr; } }
+
+/* quote */
+.quote { text-align: center; padding: clamp(60px,10vw,100px) clamp(20px,6vw,80px); }
+.quote blockquote { font-family: var(--font-serif); font-style: italic; font-size: clamp(1.6rem, 4vw, 2.6rem); line-height: 1.4; max-width: 18ch; margin: 0 auto 20px; }
+.quote cite { font-style: normal; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.6; }
+
+/* contact */
+.contact { text-align: center; }
+.contact__box { background: var(--ink); color: var(--paper); border-radius: 28px; padding: clamp(50px, 9vw, 100px) 24px; }
+.contact__eyebrow { font-size: 0.82rem; letter-spacing: 0.28em; text-transform: uppercase; color: #d59a7c; margin-bottom: 20px; }
+.contact__title { font-size: clamp(2.1rem, 6vw, 3.6rem); margin-bottom: 22px; }
+.contact__title em { font-style: italic; color: #d59a7c; }
+.contact p.sub { opacity: 0.68; max-width: 46ch; margin: 0 auto 34px; line-height: 1.7; }
+.contact .btn--primary { background: var(--paper); color: var(--ink); }
+.contact__location { margin-top: 26px; font-size: 0.85rem; opacity: 0.55; letter-spacing: 0.04em; }
+
+footer { text-align: center; padding: 50px 24px; opacity: 0.5; font-size: 0.82rem; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a href="#" class="nav__logo">Anna <em>Kaniuka</em></a>
+  <nav class="nav__links">
+    <a href="#about">Про мене</a>
+    <a href="#work">Роботи</a>
+    <a href="#services">Послуги</a>
+    <a href="https://instagram.com/anna_kaniuka.ph" target="_blank" rel="noopener">Instagram</a>
+    <a href="#contact" class="nav__cta">Записатись</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <p class="hero__eyebrow reveal">Фотограф · Тячівський район, Закарпаття</p>
+    <h1 class="hero__title reveal">Передаю <em>почуття</em><br>у кожному кадрі</h1>
+    <p class="hero__sub reveal">Знімаю фотографії про красу, гармонію та світло — весілля, родини, хрестини та етнозйомки у вишиванках серед карпатських краєвидів. Працюю в Дубовому, Тячеві та Хусті.</p>
+    <div class="hero__actions reveal">
+      <a class="btn btn--primary" href="#contact">Забронювати зйомку</a>
+      <a class="btn btn--ghost" href="#work">Дивитись роботи</a>
+    </div>
+  </div>
+  <div class="hero__photo reveal"></div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>Весілля</span><span>Родинні зйомки</span><span>Етно у вишиванках</span><span>Хрестини</span><span>Портрет</span>
+    <span>Весілля</span><span>Родинні зйомки</span><span>Етно у вишиванках</span><span>Хрестини</span><span>Портрет</span>
+  </div>
+</div>
+
+<section id="about">
+  <div class="about">
+    <div class="about__photo reveal"></div>
+    <div class="reveal">
+      <p class="eyebrow">Про мене</p>
+      <h2 class="title" style="margin-bottom:22px">Анна Канюка</h2>
+      <div class="about__text">
+        <p>Я фотограф із Тячівського району — знімаю там, де виросла: у Дубовому, Тячеві та Хусті, серед гір Закарпаття. Для мене фотографія — це не постановка, а спосіб зберегти справжні почуття: тепло родини, ніжність весільного дня, гордість за традиції.</p>
+        <p>Люблю етнозйомки у вишиванках — коли краса природи зустрічається з українською автентикою. Кожна зйомка — це історія про красу, гармонію та світло, розказана вашими кадрами.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats reveal">
+  <div><div class="num">190+</div><span>фотозйомок</span></div>
+  <div><div class="num">1500+</div><span>підписників в Instagram</span></div>
+  <div><div class="num">3</div><span>міста роботи</span></div>
+  <div><div class="num">100%</div><span>живих емоцій</span></div>
+</div>
+
+<section id="work">
+  <div class="section-head reveal">
+    <p class="eyebrow">Обране</p>
+    <h2 class="title">Роботи</h2>
+  </div>
+  <div class="filters reveal">
+    <button class="is-active" data-filter="all">Усі</button>
+    <button data-filter="ethno">Етно</button>
+    <button data-filter="wedding">Весілля</button>
+    <button data-filter="family">Родина</button>
+    <button data-filter="kids">Хрестини</button>
+    <button data-filter="nature">Карпати</button>
+  </div>
+  <div class="gallery__grid">
+    <div class="gallery__tile gallery__tile--1 reveal" data-cat="ethno"><span>Етно · вишиванка</span></div>
+    <div class="gallery__tile gallery__tile--2 reveal" data-cat="family"><span>Родинна зйомка</span></div>
+    <div class="gallery__tile gallery__tile--3 reveal" data-cat="nature"><span>Гори Тячівщини</span></div>
+    <div class="gallery__tile gallery__tile--4 reveal" data-cat="wedding"><span>Весілля</span></div>
+    <div class="gallery__tile gallery__tile--5 reveal" data-cat="kids"><span>Хрестини</span></div>
+    <div class="gallery__tile gallery__tile--6 reveal" data-cat="ethno"><span>Етно · портрет</span></div>
+    <div class="gallery__tile gallery__tile--7 reveal" data-cat="wedding"><span>Весільний день</span></div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-head reveal">
+    <p class="eyebrow">Що знімаю</p>
+    <h2 class="title">Послуги</h2>
+  </div>
+  <div class="services__grid">
+    <div class="service-card reveal">
+      <h3>Весільна зйомка</h3>
+      <p>Повний весільний день або окрема частина — збори, церемонія, прогулянка, банкет.</p>
+      <span>За домовленістю</span>
+    </div>
+    <div class="service-card reveal">
+      <h3>Родинна фотосесія</h3>
+      <p>Теплі кадри всієї родини — вдома, на природі або в гостях у бабусі з дідусем.</p>
+      <span>За домовленістю</span>
+    </div>
+    <div class="service-card reveal">
+      <h3>Етнозйомка у вишиванках</h3>
+      <p>Автентичні образи серед карпатських краєвидів або в українській хаті.</p>
+      <span>За домовленістю</span>
+    </div>
+    <div class="service-card reveal">
+      <h3>Хрестини та свята</h3>
+      <p>Зворушливі моменти важливого дня — без метушні, з увагою до деталей.</p>
+      <span>За домовленістю</span>
+    </div>
+    <div class="service-card reveal">
+      <h3>Індивідуальний портрет</h3>
+      <p>Персональна зйомка для себе, соцмереж чи в подарунок близьким.</p>
+      <span>За домовленістю</span>
+    </div>
+    <div class="service-card reveal">
+      <h3>Виїзна зйомка</h3>
+      <p>Готова виїхати за межі Тячівського району — деталі обговорюємо особисто.</p>
+      <span>За домовленістю</span>
+    </div>
+  </div>
+</section>
+
+<section class="quote">
+  <blockquote class="reveal">«Фотографії про красу, гармонію та світло»</blockquote>
+  <cite class="reveal">— Anna Kaniuka Ph</cite>
+</section>
+
+<section id="contact" class="contact">
+  <div class="contact__box reveal">
+    <p class="contact__eyebrow">На зв'язку</p>
+    <h2 class="contact__title">Запишіться на <em>зйомку</em></h2>
+    <p class="sub">Пишіть у Instagram у прямі повідомлення — відповідаю особисто та підберу дату й локацію під ваше свято.</p>
+    <a class="btn btn--primary" href="https://instagram.com/anna_kaniuka.ph" target="_blank" rel="noopener">Написати в Instagram · @anna_kaniuka.ph</a>
+    <p class="contact__location">Дубове · Тячів · Хуст, Закарпаття</p>
+  </div>
+</section>
+
+<footer>© Anna Kaniuka Ph · Фотограф<br><span style="opacity:0.6">developed by vasil</span></footer>
+
+<script>
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+revealEls.forEach(el => io.observe(el));
+
+const filterButtons = document.querySelectorAll('.filters button');
+const tiles = document.querySelectorAll('.gallery__tile');
+filterButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterButtons.forEach(b => b.classList.remove('is-active'));
+    btn.classList.add('is-active');
+    const filter = btn.dataset.filter;
+    tiles.forEach(tile => {
+      const show = filter === 'all' || tile.dataset.cat === filter;
+      tile.classList.toggle('is-hidden', !show);
+    });
+  });
+});
+</script>
+</body>
+</html>
